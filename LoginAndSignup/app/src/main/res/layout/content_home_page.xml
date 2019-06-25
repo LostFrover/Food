@@ -4,66 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_light_background"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="ir.mhkz.loginandsignup.HomePage"
     tools:showIn="@layout/activity_home_page">
 
-    <ImageView
-        android:id="@+id/cameraImage"
-        android:layout_width="177dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.343"
-        app:srcCompat="@drawable/camera" />
-
-    <Button
-        android:id="@+id/cameraBtn"
-        android:layout_width="140dp"
-        android:layout_height="68dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/white"
-        android:text="@string/cameraBtn"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cameraImage"
-        app:layout_constraintVertical_bias="0.05" />
-
-    <ImageButton
-        android:id="@+id/homeDtlBtn"
-        android:layout_width="49dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/cardview_shadow_end_color"
-        android:scaleType="centerInside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/detail" />
-
-    <ImageButton
-        android:id="@+id/searchBtn"
-        android:layout_width="54dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/cardview_shadow_end_color"
-        android:scaleType="centerInside"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/search" />
 </android.support.constraint.ConstraintLayout>
