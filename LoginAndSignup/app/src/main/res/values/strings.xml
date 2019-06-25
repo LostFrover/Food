@@ -11,4 +11,5 @@
     <string name="SignUp">注册</string>
     <string name="registrationPage">用户注册</string>
     <string name="title_activity_home_page">HomePage</string>
+    <string name="cameraBtn">点此拍照</string>
 </resources>
