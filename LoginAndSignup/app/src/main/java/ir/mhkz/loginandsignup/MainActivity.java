@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     EditText username, password, reg_username, reg_password,
-            reg_firstName, reg_lastName, reg_email, reg_confirmemail;
+             reg_email, reg_confirmpassword;
     Button login, signUp, reg_register;
     TextInputLayout txtInLayoutUsername, txtInLayoutPassword, txtInLayoutRegPassword;
     CheckBox rememberMe;
@@ -57,32 +57,39 @@ public class MainActivity extends AppCompatActivity {
 
                 if (username.getText().toString().trim().isEmpty()) {
 
-                    Snackbar snackbar = Snackbar.make(view, "Please fill out these fields",
+                    Snackbar snackbar = Snackbar.make(view, "输入有误",
                             Snackbar.LENGTH_LONG);
                     View snackbarView = snackbar.getView();
                     snackbarView.setBackgroundColor(getResources().getColor(R.color.red));
                     snackbar.show();
-                    txtInLayoutUsername.setError("Username should not be empty");
+                    txtInLayoutUsername.setError("用户名不可为空");
                 } else {
                     //the codes for checking username
                 }
                 if (password.getText().toString().trim().isEmpty()) {
-                    Snackbar snackbar = Snackbar.make(view, "Please fill out these fields",
+                    Snackbar snackbar = Snackbar.make(view, "输入有误",
                             Snackbar.LENGTH_LONG);
                     View snackbarView = snackbar.getView();
                     snackbarView.setBackgroundColor(getResources().getColor(R.color.red));
                     snackbar.show();
-                    txtInLayoutPassword.setError("Password should not be empty");
+                    txtInLayoutPassword.setError("密码不可为空");
                 } else {
                     //the codes for checking password
                 }
 
                 if (rememberMe.isChecked()) {
+                    //记住密码
                     //the codes if box is checked
+
                 } else {
                     //if box is not checked
                 }
-
+                //之后post用户名与密码，比对数据库后返回结果
+                if(username.getText().toString()=="aaa"&&
+                    password.getText().toString()=="aaa")
+                {
+                    
+                }
             }
 
         });
@@ -99,47 +106,53 @@ public class MainActivity extends AppCompatActivity {
 
         reg_username = dialogView.findViewById(R.id.reg_username);
         reg_password = dialogView.findViewById(R.id.reg_password);
-        reg_firstName = dialogView.findViewById(R.id.reg_firstName);
-        reg_lastName = dialogView.findViewById(R.id.reg_lastName);
+        reg_confirmpassword = dialogView.findViewById(R.id.reg_confirmpassword);
         reg_email = dialogView.findViewById(R.id.reg_email);
-        reg_confirmemail = dialogView.findViewById(R.id.reg_confirmemail);
         reg_register = dialogView.findViewById(R.id.reg_register);
         txtInLayoutRegPassword = dialogView.findViewById(R.id.txtInLayoutRegPassword);
 
         reg_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (reg_username.getText().toString().trim().isEmpty()) {
+                int flag = 0;
+                while (flag == 0) {
+                    if (reg_username.getText().toString().trim().isEmpty()) {
 
-                    reg_username.setError("Please fill out this field");
-                }
-                if (reg_password.getText().toString().trim().isEmpty()) {
-                    txtInLayoutRegPassword.setPasswordVisibilityToggleEnabled(false);
-                    reg_password.setError("Please fill out this field");
-                } else {
-                    txtInLayoutRegPassword.setPasswordVisibilityToggleEnabled(true);
+                        reg_username.setError("此行不可留空");
+                    }
+                    if (reg_password.getText().toString().trim().isEmpty()) {
+                        txtInLayoutRegPassword.setPasswordVisibilityToggleEnabled(false);
+                        reg_password.setError("此行不可留空");
+                    } else {
+                        txtInLayoutRegPassword.setPasswordVisibilityToggleEnabled(true);
+                    }
+                    if (reg_confirmpassword.getText().toString().trim().isEmpty()) {
+                        txtInLayoutRegPassword.setPasswordVisibilityToggleEnabled(false);
+                        reg_confirmpassword.setError("此行不可留空");
+                    } else {
+                        txtInLayoutRegPassword.setPasswordVisibilityToggleEnabled(true);
+                        if(!reg_confirmpassword.getText().toString().equals(reg_password.getText().toString()))
+                        {
+                            reg_confirmpassword.setError("与输入密码不同，请检查");
+                        }
+                    }
+                    if (reg_email.getText().toString().trim().isEmpty()) {
 
+                        reg_email.setError("此行不可留空");
+                    }
+                    if(!(   reg_username.getText().toString().trim().isEmpty()&&
+                            reg_password.getText().toString().trim().isEmpty()&&
+                            reg_confirmpassword.getText().toString().trim().isEmpty()&&
+                            reg_email.getText().toString().trim().isEmpty()))
+                    {
+                        flag=1;
+                    }
+                    return;
                 }
-                if (reg_firstName.getText().toString().trim().isEmpty()) {
+                //必要条件不为空
 
-                    reg_firstName.setError("Please fill out this field");
-                }
-                if (reg_lastName.getText().toString().trim().isEmpty()) {
-
-                    reg_lastName.setError("Please fill out this field");
-                }
-                if (reg_email.getText().toString().trim().isEmpty()) {
-
-                    reg_email.setError("Please fill out this field");
-                }
-                if (reg_confirmemail.getText().toString().trim().isEmpty()) {
-
-                    reg_confirmemail.setError("Please fill out this field");
-                }
             }
         });
-
-
         dialog.show();
 
 

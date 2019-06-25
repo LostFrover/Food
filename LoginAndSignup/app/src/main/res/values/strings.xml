@@ -1,15 +1,14 @@
 <resources>
-    <string name="app_name">LoginAndSignup</string>
-    <string name="Username">Username</string>
-    <string name="Password">Password</string>
-    <string name="RememberMe">Remember Me</string>
-    <string name="Login">Login</string>
-    <string name="Register">Register</string>
+    <string name="app_name">绿查</string>
+    <string name="Username">用户名</string>
+    <string name="Password">密码</string>
+    <string name="RememberMe">记住密码</string>
+    <string name="Login">登录</string>
+    <string name="Register">注册</string>
     <string name="Logo">Logo</string>
-    <string name="FirstName">FirstName</string>
-    <string name="LastName">LastName</string>
     <string name="Email">Email</string>
-    <string name="ConfirmEmailAddress">Confirm Email Address</string>
-    <string name="SignUp">Sign Up</string>
-    <string name="registrationPage">Registration Page</string>
+    <string name="ConfirmPassword">确认密码</string>
+    <string name="SignUp">注册</string>
+    <string name="registrationPage">用户注册</string>
+    <string name="title_activity_home_page">HomePage</string>
 </resources>
