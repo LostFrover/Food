@@ -44,7 +44,11 @@ public class MainActivity extends AppCompatActivity {
         rememberMe = findViewById(R.id.rememberMe);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+<<<<<<< HEAD
         editor=sharedPreferences.edit();
+=======
+        editor = sharedPreferences.edit();
+>>>>>>> 30519f38b442c12c73184d659ce11b68d8c3de99
         boolean rem = sharedPreferences.getBoolean("remember_password",false);
         if (rem==true)
         {
