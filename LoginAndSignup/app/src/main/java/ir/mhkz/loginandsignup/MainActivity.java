@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         rememberMe = findViewById(R.id.rememberMe);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor=sharedPreferences.edit();
         boolean rem = sharedPreferences.getBoolean("remember_password",false);
         if (rem==true)
         {
@@ -96,18 +97,18 @@ public class MainActivity extends AppCompatActivity {
                     //记住密码
                     rempassword=password.getText().toString();
                 }
-//                if(rememberMe.isChecked())
-//                {
-//                    editor.putString("Name",remname).commit();
-//                    editor.putString("Password",rempassword).commit();
-//                    editor.putBoolean("remember_password",true).commit();
-//                    Toast.makeText(MainActivity.this,"保存",Toast.LENGTH_SHORT).show();
-//                }
-//                else {
-//                    editor.clear();
-//                    Toast.makeText(MainActivity.this,"清除",Toast.LENGTH_SHORT).show();
-//                }
-//                editor.apply();
+                if(rememberMe.isChecked())
+                {
+                    editor.putString("Name",remname).commit();
+                    editor.putString("Password",rempassword).commit();
+                    editor.putBoolean("remember_password",true).commit();
+                    Toast.makeText(MainActivity.this,"保存",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    editor.clear();
+                    Toast.makeText(MainActivity.this,"清除",Toast.LENGTH_SHORT).show();
+                }
+                editor.apply();
 
                 //之后post用户名与密码，比对数据库后返回结果
 
