@@ -10,16 +10,6 @@
     tools:showIn="@layout/activity_home_page">
 
     <ImageButton
-        android:id="@+id/homeDtlBtn"
-        android:layout_width="49dp"
-        android:layout_height="64dp"
-        android:background="@color/cardview_shadow_end_color"
-        android:scaleType="centerInside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/detail" />
-
-    <ImageButton
         android:id="@+id/cameraBtn"
         android:layout_width="149dp"
         android:layout_height="142dp"
@@ -27,9 +17,10 @@
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.542"
+        app:layout_constraintVertical_bias="0.3"
         app:srcCompat="@drawable/camera" />
 
     <TextView
@@ -46,30 +37,52 @@
         app:layout_constraintTop_toBottomOf="@+id/cameraBtn"
         tools:text="点击拍照" />
 
-    <LinearLayout
-        android:layout_width="305dp"
-        android:layout_height="118dp"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/homeDtlBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="?attr/actionBarDivider" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:baselineAligned="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/homeDtlBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/cardview_shadow_end_color"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/detail" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <SearchView
             android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:iconifiedByDefault="false"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/gray"
             android:queryHint="在此处输入搜索内容">
 
         </SearchView>
 
-        <ListView
-            android:id="@+id/listView"
-            android:layout_width="match_parent"
-            android:layout_height="39dp"
-            android:textFilterEnabled="true" />
     </LinearLayout>
-
 </android.support.constraint.ConstraintLayout>

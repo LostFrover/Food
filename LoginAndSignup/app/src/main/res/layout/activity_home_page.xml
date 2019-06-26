@@ -12,14 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-<<<<<<< HEAD
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-=======
+
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view_left"
         android:layout_width="wrap_content"
@@ -28,6 +21,5 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/sidemenuhead"
         app:menu="@menu/sidemenu"/>
->>>>>>> 30519f38b442c12c73184d659ce11b68d8c3de99
 
 </android.support.v4.widget.DrawerLayout>
