@@ -1,6 +1,8 @@
 package ir.mhkz.loginandsignup;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
@@ -11,16 +13,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import java.sql.*;
 
 public class MainActivity extends AppCompatActivity {
 
 
-    EditText username, password, reg_username, reg_password,
+    private EditText username, password, reg_username, reg_password,
              reg_email, reg_confirmpassword;
-    Button login, signUp, reg_register;
-    TextInputLayout txtInLayoutUsername, txtInLayoutPassword, txtInLayoutRegPassword, txtInLayoutRegConfirmPassword;
-    CheckBox rememberMe;
+    private Button login, signUp, reg_register;
+    private TextInputLayout txtInLayoutUsername, txtInLayoutPassword, txtInLayoutRegPassword, txtInLayoutRegConfirmPassword;
+    private CheckBox rememberMe;
+
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+    //用于记住密码
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +43,17 @@ public class MainActivity extends AppCompatActivity {
         txtInLayoutPassword = findViewById(R.id.txtInLayoutPassword);
         rememberMe = findViewById(R.id.rememberMe);
 
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean rem = sharedPreferences.getBoolean("remember_password",false);
+        if (rem==true)
+        {
+            username.setText(sharedPreferences.getString("Name",""));
+            password.setText(sharedPreferences.getString("Password",""));
+            rememberMe.setChecked(true);
+        }
+        //读取存储用户名与密码以及记住选项
 
         ClickLoginBtn();
-
 
         //SignUp's Button for showing registration page
         signUp.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     //This is method for doing operation of check login
@@ -56,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String remname="",rempassword="";//记录用户名密码
 
                 if (username.getText().toString().trim().isEmpty()) {
 
@@ -66,7 +82,8 @@ public class MainActivity extends AppCompatActivity {
                     snackbar.show();
                     txtInLayoutUsername.setError("用户名不可为空");
                 } else {
-                    //the codes for checking username
+                    //记住用户名
+                    remname=username.getText().toString();
                 }
                 if (password.getText().toString().trim().isEmpty()) {
                     Snackbar snackbar = Snackbar.make(view, "输入有误",
@@ -76,16 +93,22 @@ public class MainActivity extends AppCompatActivity {
                     snackbar.show();
                     txtInLayoutPassword.setError("密码不可为空");
                 } else {
-                    //the codes for checking password
+                    //记住密码
+                    rempassword=password.getText().toString();
                 }
+//                if(rememberMe.isChecked())
+//                {
+//                    editor.putString("Name",remname).commit();
+//                    editor.putString("Password",rempassword).commit();
+//                    editor.putBoolean("remember_password",true).commit();
+//                    Toast.makeText(MainActivity.this,"保存",Toast.LENGTH_SHORT).show();
+//                }
+//                else {
+//                    editor.clear();
+//                    Toast.makeText(MainActivity.this,"清除",Toast.LENGTH_SHORT).show();
+//                }
+//                editor.apply();
 
-                if (rememberMe.isChecked()) {
-                    //记住密码功能，待补全
-                    //the codes if box is checked
-
-                } else {
-                    //if box is not checked
-                }
                 //之后post用户名与密码，比对数据库后返回结果
 
                 if(username.getText().toString().equals("aaa")&&
@@ -104,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //The method for opening the registration page and another processes or checks for registering
+    //注册监听器
     private void ClickSignUp() {
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
