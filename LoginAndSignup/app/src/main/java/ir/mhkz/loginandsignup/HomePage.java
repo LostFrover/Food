@@ -27,6 +27,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import static android.provider.MediaStore.EXTRA_OUTPUT;
 
@@ -52,8 +54,24 @@ public class HomePage extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             //单击搜索是激发该方法
             public boolean onQueryTextSubmit(String newtext) {
-                //todo
+                Toast.makeText(HomePage.this, "搜索框暂时不可用", Toast.LENGTH_SHORT).show();
                 return false;
+//                String serv="https://203.195.155.114:3389/reg?choise=0&name="+name+"&pwd="+pwd+"&email="+email;
+//                try {
+//                    URL url = new URL(serv);
+//                    HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+//                    conn.setConnectTimeout(5000);
+//                    conn.setRequestMethod("GET");
+//                    int code = conn.getResponseCode();
+//                    if (code == 200) {
+////                                    InputStream is = conn.getInputStream();
+////                                    String info = StreamTools.readInputStream(is);
+////                                    return info;
+//                    }
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+
             }
 
             // 用户输入文字激发该方法
@@ -69,6 +87,8 @@ public class HomePage extends AppCompatActivity {
                 sidemenu.openDrawer(Gravity.LEFT);
             }
         });
+
+
 
         cameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override

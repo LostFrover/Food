@@ -8,6 +8,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,13 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLDecoder;
 import java.sql.*;
 
 public class MainActivity extends AppCompatActivity {
@@ -109,8 +117,25 @@ public class MainActivity extends AppCompatActivity {
                     editor.clear();
                 }
                 editor.apply();
-
                 //之后post用户名与密码，比对数据库后返回结果
+                //服务器访问接口  ip:端口(3389)?内容
+
+                String serv="https://203.195.155.114:3389/reg?choise=1&name="+remname+"&pwd="+rempassword;
+                try {
+                    URL url = new URL(serv);
+                    HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                    conn.setConnectTimeout(5000);
+                    conn.setRequestMethod("GET");
+                    int code = conn.getResponseCode();
+                    if (code == 200) {
+//                                    InputStream is = conn.getInputStream();
+//                                    String info = StreamTools.readInputStream(is);
+//                                    return info;
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
 
                 if(username.getText().toString().equals("aaa")&&
                     password.getText().toString().equals("aaa"))
@@ -125,8 +150,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-
     }
+
+
 
     //注册监听器
     private void ClickSignUp() {
@@ -168,17 +194,37 @@ public class MainActivity extends AppCompatActivity {
                     txtInLayoutRegPassword.setPasswordVisibilityToggleEnabled(true);
                     if (!reg_confirmpassword.getText().toString().equals(reg_password.getText().toString())) {
                         reg_confirmpassword.setError("与输入密码不同，请检查");
-                    }
-                }
+                    }else
+                    {
+                        if (!(reg_username.getText().toString().trim().isEmpty() &&
+                                reg_password.getText().toString().trim().isEmpty() &&
+                                reg_confirmpassword.getText().toString().trim().isEmpty() &&
+                                reg_email.getText().toString().trim().isEmpty()))
+                        {
+                            String name=reg_username.getText().toString();
+                            String pwd=reg_password.getText().toString();
+                            String email=reg_email.getText().toString();
+                            //向服务器请求注册，并发送用户名，邮箱，密码
+                            //用户编号自动+=1
+                            String serv="https://203.195.155.114:3389/healthapp?choise=0&name="+name+"&pwd="+pwd+"&email="+email;
+                            try {
+                                URL url = new URL(serv);
+                                HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                                conn.setConnectTimeout(5000);
+                                conn.setRequestMethod("GET");
+                                int code = conn.getResponseCode();
+                                if (code == 200) {
+//                                    InputStream is = conn.getInputStream();
+//                                    String info = StreamTools.readInputStream(is);
+//                                    return info;
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
 
-                if (!(reg_username.getText().toString().trim().isEmpty() &&
-                        reg_password.getText().toString().trim().isEmpty() &&
-                        reg_confirmpassword.getText().toString().trim().isEmpty() &&
-                        reg_email.getText().toString().trim().isEmpty()))
-                {
-                    //向服务器请求注册，并发送用户名，邮箱，密码
-                    //用户编号自动+=1
-                    dia.dismiss();
+                            dia.dismiss();
+                        }
+                    }
                 }
             }
         });
