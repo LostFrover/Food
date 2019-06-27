@@ -6,11 +6,8 @@ from bs4 import BeautifulSoup
 import io
 import sys
 import os
-
 #周梓浩
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
 num = 0
 numPicture = 0
 file = ''
@@ -76,7 +73,7 @@ def dowmloadPicture(html, keyword):
             print('错误，当前图片无法下载')
             continue
         else:
-            string = file + r'\\' + keyword + '_' + str(num) + '.jpg'
+            string = file + r'/' + keyword + '_' + str(num) + '.jpg'
             fp = open(string, 'wb')
             fp.write(pic.content)
             fp.close()
@@ -86,7 +83,7 @@ def dowmloadPicture(html, keyword):
 
 
 if __name__ == '__main__':  # 主函数入口
-    tm = int(input('请输入每类图片的下载数量 '))
+    tm = 60
     numPicture = tm
     line_list = []
     with io.open('./name.txt','r', encoding='utf-8') as file:
@@ -97,13 +94,9 @@ if __name__ == '__main__':  # 主函数入口
         tot = Find(url)
         Recommend = recommend(url)  # 记录相关推荐
         print('经过检测%s类图片共有%d张' % (word, tot))
-        file = word + '文件'
+        file = 'data'
         y = os.path.exists(file)
-        if y == 1:
-            print('该文件已存在，请重新输入')
-            file = word + '文件夹2'
-            os.mkdir(file)
-        else:
+        if y == 0:
             os.mkdir(file)
         t = 0
         tmp = url
@@ -121,3 +114,5 @@ if __name__ == '__main__':  # 主函数入口
         numPicture = numPicture + tm
 
     print('当前搜索结束，感谢使用')
+
+
