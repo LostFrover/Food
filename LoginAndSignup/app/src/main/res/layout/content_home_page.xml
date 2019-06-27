@@ -39,10 +39,11 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -50,23 +51,22 @@
         app:srcCompat="?attr/actionBarDivider" />
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:layout_marginEnd="0dp"
+        android:background="@color/gray"
         android:baselineAligned="false"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/homeDtlBtn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:background="@color/cardview_shadow_end_color"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="0"
+            android:background="@color/gray"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/detail" />
 
@@ -80,6 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@color/gray"
+            android:divider="@drawable/search"
             android:queryHint="在此处输入搜索内容">
 
         </SearchView>

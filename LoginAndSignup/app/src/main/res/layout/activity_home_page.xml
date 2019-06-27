@@ -5,10 +5,14 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="right"
     android:fitsSystemWindows="true"
+    android:foregroundGravity="right"
+    app:layout_anchorGravity="right"
     tools:openDrawer="start">
 
-    <include layout="@layout/content_home_page"
+    <include
+        layout="@layout/content_home_page"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -18,8 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:fitsSystemWindows="true"
+        android:background="#ededed"
         app:headerLayout="@layout/sidemenuhead"
-        app:menu="@menu/sidemenu"/>
+        app:menu="@menu/sidemenu" />
 
 </android.support.v4.widget.DrawerLayout>

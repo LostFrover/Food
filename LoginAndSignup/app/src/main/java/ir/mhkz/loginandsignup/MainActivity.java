@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                     Snackbar snackbar = Snackbar.make(view, "输入有误",
                             Snackbar.LENGTH_LONG);
                     View snackbarView = snackbar.getView();
-                    snackbarView.setBackgroundColor(getResources().getColor(R.color.red));
+                    snackbarView.setBackgroundColor(getResources().getColor(R.color.wrong));
                     snackbar.show();
                     txtInLayoutUsername.setError("用户名不可为空");
                 } else {
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                     Snackbar snackbar = Snackbar.make(view, "输入有误",
                             Snackbar.LENGTH_LONG);
                     View snackbarView = snackbar.getView();
-                    snackbarView.setBackgroundColor(getResources().getColor(R.color.red));
+                    snackbarView.setBackgroundColor(getResources().getColor(R.color.wrong));
                     snackbar.show();
                     txtInLayoutPassword.setError("密码不可为空");
                 } else {
@@ -104,11 +104,9 @@ public class MainActivity extends AppCompatActivity {
                     editor.putString("Name",remname).commit();
                     editor.putString("Password",rempassword).commit();
                     editor.putBoolean("remember_password",true).commit();
-                    Toast.makeText(MainActivity.this,"保存",Toast.LENGTH_SHORT).show();
                 }
                 else {
                     editor.clear();
-                    Toast.makeText(MainActivity.this,"清除",Toast.LENGTH_SHORT).show();
                 }
                 editor.apply();
 
