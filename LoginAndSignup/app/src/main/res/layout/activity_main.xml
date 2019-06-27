@@ -23,8 +23,8 @@
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="157dp"
+            android:layout_height="117dp"
             android:layout_marginStart="8.0dip"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="8.0dip"
@@ -154,7 +154,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Constraint2"
-        app:layout_constraintVertical_bias="0.506">
+        app:layout_constraintVertical_bias="0.337">
 
         <Button
             android:id="@+id/login"

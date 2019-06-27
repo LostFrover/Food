@@ -7,5 +7,6 @@
     <color name="gray">#C9D6C0</color>
     <color name="black">#000000</color>
     <color name="yellow">#FBE544</color>
-    <color name="wrong">#BFE45D</color>
+    <color name="wrong">#bed742</color>
+    <color name="sidemenuhead">#C9DCC3</color>
 </resources>

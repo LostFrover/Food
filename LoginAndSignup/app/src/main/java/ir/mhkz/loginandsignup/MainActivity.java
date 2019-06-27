@@ -38,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences.Editor editor;
     //用于记住密码
 
+    private boolean uflag = true;
+    private boolean pflag = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,24 +88,13 @@ public class MainActivity extends AppCompatActivity {
                 String remname="",rempassword="";//记录用户名密码
 
                 if (username.getText().toString().trim().isEmpty()) {
-
-                    Snackbar snackbar = Snackbar.make(view, "输入有误",
-                            Snackbar.LENGTH_LONG);
-                    View snackbarView = snackbar.getView();
-                    snackbarView.setBackgroundColor(getResources().getColor(R.color.wrong));
-                    snackbar.show();
-                    txtInLayoutUsername.setError("用户名不可为空");
+                    uflag = false;
                 } else {
                     //记住用户名
                     remname=username.getText().toString();
                 }
                 if (password.getText().toString().trim().isEmpty()) {
-                    Snackbar snackbar = Snackbar.make(view, "输入有误",
-                            Snackbar.LENGTH_LONG);
-                    View snackbarView = snackbar.getView();
-                    snackbarView.setBackgroundColor(getResources().getColor(R.color.wrong));
-                    snackbar.show();
-                    txtInLayoutPassword.setError("密码不可为空");
+                    pflag = false;
                 } else {
                     //记住密码
                     rempassword=password.getText().toString();
@@ -117,6 +109,25 @@ public class MainActivity extends AppCompatActivity {
                     editor.clear();
                 }
                 editor.apply();
+
+                //用户名或密码为空的时候的提示
+                if(uflag == false ){
+                    Snackbar snackbar = Snackbar.make(view, "请输入用户名",
+                            Snackbar.LENGTH_LONG);
+                    View snackbarView = snackbar.getView();
+                    snackbarView.setBackgroundColor(getResources().getColor(R.color.wrong));
+                    snackbar.show();
+                    uflag = true;
+                }
+                else if(uflag != false&&pflag == false){
+                    Snackbar snackbar = Snackbar.make(view, "请输入密码",
+                            Snackbar.LENGTH_LONG);
+                    View snackbarView = snackbar.getView();
+                    snackbarView.setBackgroundColor(getResources().getColor(R.color.wrong));
+                    snackbar.show();
+                    pflag = true;
+                }
+
                 //之后post用户名与密码，比对数据库后返回结果
                 //服务器访问接口  ip:端口(3389)?内容
 
@@ -136,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-
                 if(username.getText().toString().equals("aaa")&&
                     password.getText().toString().equals("aaa"))
                 {
@@ -144,15 +154,11 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, HomePage.class);
                     startActivity(intent);
                     MainActivity.this.finish();
-
-
                 }
             }
 
         });
     }
-
-
 
     //注册监听器
     private void ClickSignUp() {
@@ -228,8 +234,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
 
     }
 
