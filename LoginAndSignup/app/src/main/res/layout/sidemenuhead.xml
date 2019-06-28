@@ -23,7 +23,7 @@
         android:textColor="@color/black" />
 
     <TextView
-        android:id="@+id/username"
+        android:id="@+id/side_username"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start|left"
