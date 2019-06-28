@@ -62,7 +62,7 @@ public class HomePage extends AppCompatActivity {
                 Toast.makeText(HomePage.this, "搜索框暂时不可用", Toast.LENGTH_SHORT).show();
 
 
-                String serv = "http://203.195.155.114:3389/hhh";
+                String serv = "http://203.195.155.114:3389/HealthApp?choise=5&food="+newtext;
                 HttpGet httpGet = new HttpGet(serv);
                 HttpClient httpClient = new DefaultHttpClient();
                 //发送请求
