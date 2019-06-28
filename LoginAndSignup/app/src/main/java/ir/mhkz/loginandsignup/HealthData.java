@@ -3,11 +3,11 @@ package ir.mhkz.loginandsignup;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Account extends AppCompatActivity {
+public class HealthData extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_usersetting);
+        setContentView(R.layout.activity_health_data);
     }
 }
