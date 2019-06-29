@@ -5,10 +5,12 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -31,6 +33,7 @@ public class HomePage extends AppCompatActivity {
     private ImageView mImageView;
     String name="";
     String pwd="";
+    String id="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,25 +45,49 @@ public class HomePage extends AppCompatActivity {
         final DrawerLayout sidemenu =findViewById(R.id.drawer_layout);
 
         Intent intent = getIntent();
-        final TextView username = findViewById(R.id.side_username);
         name = intent.getStringExtra("username");
         pwd = intent.getStringExtra("password");
+        id = intent.getStringExtra("id");
         //尝试修改用户信息显示
         NavigationView ngv=findViewById(R.id.nav_view_left);
         View smh = ngv.getHeaderView(0);
         TextView side_name = smh.findViewById(R.id.side_username);
         side_name.setText(name);
+        TextView side_id = smh.findViewById(R.id.side_userid);
+        side_id.setText(id);
+        ngv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId())
+                {
+                    case R.id.account:
+                        Intent intentAccount = new Intent(HomePage.this,Account.class);
+                        intentAccount.putExtra("id",id);
+                        intentAccount.putExtra("name",name);
+                        intentAccount.putExtra("pwd",pwd);
+                        startActivity(intentAccount);
+                        break;
+                    case R.id.healthdata:
+                        Intent intentHealthD = new Intent(HomePage.this,HealthData.class);
+                        intentHealthD.putExtra("id",id);
+                        intentHealthD.putExtra("name",name);
+                        intentHealthD.putExtra("pwd",pwd);
+                        startActivity(intentHealthD);
+                        break;
+                }
+                return false;
+            }
+        });
 
         mImageView = findViewById(R.id.imageView);
 
-        searchView = (SearchView) findViewById(R.id.searchView);
+        searchView = findViewById(R.id.searchView);
         searchView.setSubmitButtonEnabled(true);
         //为SearchView设置监听器
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             //单击搜索是激发该方法
             public boolean onQueryTextSubmit(String newtext) {
                 Toast.makeText(HomePage.this, "搜索框暂时不可用", Toast.LENGTH_SHORT).show();
-
 
                 String serv = "http://203.195.155.114:3389/HealthApp?choise=5&food="+newtext;
                 HttpGet httpGet = new HttpGet(serv);

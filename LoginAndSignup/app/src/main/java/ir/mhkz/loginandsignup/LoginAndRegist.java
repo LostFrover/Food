@@ -155,6 +155,7 @@ public class LoginAndRegist extends AppCompatActivity {
                             Intent intent = new Intent(LoginAndRegist.this, HomePage.class);
                             intent.putExtra("username",remname);
                             intent.putExtra("password",rempassword);
+                            intent.putExtra("id",line);
                             startActivity(intent);
                             LoginAndRegist.this.finish();
                             return;
