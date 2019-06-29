@@ -44,7 +44,7 @@ public class HomePage extends AppCompatActivity {
         homeDtlBtn = findViewById(R.id.homeDtlBtn);
         final DrawerLayout sidemenu =findViewById(R.id.drawer_layout);
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         name = intent.getStringExtra("username");
         pwd = intent.getStringExtra("password");
         id = intent.getStringExtra("id");
@@ -88,7 +88,6 @@ public class HomePage extends AppCompatActivity {
             //单击搜索是激发该方法
             public boolean onQueryTextSubmit(String newtext) {
                 //Toast.makeText(HomePage.this, "搜索框暂时不可用", Toast.LENGTH_SHORT).show();
-
                 String serv = "http://203.195.155.114:3389/HealthApp?choise=5&food="+newtext;
                 HttpGet httpGet = new HttpGet(serv);
                 HttpClient httpClient = new DefaultHttpClient();
@@ -103,7 +102,11 @@ public class HomePage extends AppCompatActivity {
                         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                         String result = "";
                         if(null!=(result = reader.readLine())) {
+                            result = result.substring(1,result.length()-1);
                             Toast.makeText(HomePage.this, result, Toast.LENGTH_SHORT).show();
+                            Intent intentRst = new Intent(HomePage.this,SearchResult.class);
+                            intentRst.putExtra("result",result);
+                            startActivity(intentRst);
                         }
 
                     } catch (Exception e) {
