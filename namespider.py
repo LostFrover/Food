@@ -1,38 +1,39 @@
-# encoding: utf-8
+﻿# encoding: utf-8
 import io
 import os
 import urllib
 from time import sleep
 import requests
 from bs4 import BeautifulSoup
-import baiduspider
-#周梓浩
-def craw(url):
-    namelist = []
-    try:
-        Html = requests.get(url,timeout = 7)
-    except Exception:
-        print ("network error")
-        return 0
-    soup = BeautifulSoup(Html.text,'html.parser')
-    firstfind = soup.find(class_="food-list")
-    for link in firstfind.findAll('img'):
-        namelist.append(link.attrs["alt"])
-    file = io.open('./name.txt', 'a+',encoding='utf-8')
-    for name in namelist:
-        file.writelines(name+'\n')
-    file.close()
+from selenium import webdriver
 
+#周梓浩
 if __name__ == '__main__':  # 主函数入口
-    listnum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    for each in listnum:
+    for each in range(1,131):
         for page_num in range(1, 10, 1):
-            li_url = "http://www.boohee.com/food/group/" + str(each) + "?page=" + str(page_num)
-            craw(li_url)
+            food={}
+            browser = webdriver.Chrome()
+            li_url = "http://www.boohee.com/food/view_group/" + str(each) + "?page=" + str(page_num)
+            browser.get(li_url)
+            soup = BeautifulSoup(browser.page_source,'html.parser')
+            catefind = soup.find(class_ = "widget-food-list pull-right").find("a").text
+            firstfind = soup.find(class_="food-list")
+            for name in firstfind.findAll('img'):
+                for heat in firstfind.findAll('p'):
+                    try:
+                        food[name.attrs["alt"]] = heat.string
+                    except Exception:
+                        continue
+                    break
+            file = io.open('./heat.txt', 'a+',encoding='utf-8')
+            file2 = io.open('./name.txt', 'a+',encoding='utf-8')
+            for key,value in food.items():
+                print(name,' ',catefind,' ',heat)
+                file.writelines(key+' '+catefind+' '+value+'\n')
+                file2.writelines(key+'\n')
+            file.close()
             sleep(1)
-    for page_num in range(1, 10, 1):
-        li_url = "http://www.boohee.com/food/view_menu/" + "?page=" + str(page_num)
-        craw(li_url)
+            browser.close()
     print("finished")
 
     
