@@ -32,6 +32,13 @@
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_group_expand_02" />
+
     </LinearLayout>
 
     <TableLayout
@@ -133,7 +140,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="(cm)"
-                android:inputType="textPersonName"
+                android:inputType="numberDecimal"
                 android:text="0.00"
                 android:textColor="@color/textcolor"
                 android:textSize="12sp" />
@@ -156,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="(kg)"
-                android:inputType="textPersonName"
+                android:inputType="number|numberDecimal"
                 android:text="0.00"
                 android:textColor="@color/textcolor"
                 android:textSize="12sp" />
@@ -181,7 +188,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="(次/min)"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:text="0"
                 android:textColor="@color/textcolor"
                 android:textSize="12sp" />
@@ -211,7 +218,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="(%)"
-                android:inputType="textPersonName"
+                android:inputType="number|numberDecimal"
                 android:text="0"
                 android:textColor="@color/textcolor"
                 android:textSize="12sp" />
@@ -234,7 +241,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="(cm)"
-                android:inputType="textPersonName"
+                android:inputType="number|numberDecimal"
                 android:text="0.00"
                 android:textColor="@color/textcolor"
                 android:textSize="12sp" />
@@ -260,7 +267,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="(mmol/L)"
-                android:inputType="textPersonName"
+                android:inputType="number|numberDecimal"
                 android:text="0.00"
                 android:textColor="@color/textcolor"
                 android:textSize="12sp" />
@@ -283,7 +290,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="(mmol/L)"
-                android:inputType="textPersonName"
+                android:inputType="number|numberDecimal"
                 android:text="0.00"
                 android:textColor="@color/textcolor"
                 android:textSize="12sp" />

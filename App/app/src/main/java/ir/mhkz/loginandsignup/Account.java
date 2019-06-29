@@ -3,6 +3,8 @@ package ir.mhkz.loginandsignup;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -26,7 +28,7 @@ public class Account extends AppCompatActivity {
             StrictMode.setThreadPolicy(policy);
         }
 
-        String serv = "http://203.195.155.114:3389/HealthApp?choise=5&food=";
+        String serv = "http://203.195.155.114:3389/HealthApp?choise=7&food=";
         HttpGet httpGet = new HttpGet(serv);
         HttpClient httpClient = new DefaultHttpClient();
         //发送请求
@@ -50,5 +52,13 @@ public class Account extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        ImageButton back=findViewById(R.id.backBtn);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Account.this.finish();
+            }
+        });
     }
 }

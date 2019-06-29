@@ -138,8 +138,9 @@ public class LoginAndRegist extends AppCompatActivity {
                 HttpClient httpClient = new DefaultHttpClient();
                 //发送请求
                 try {
-                    HttpResponse response = httpClient.execute(httpGet);
-                    if (null == response) {
+                    HttpResponse response = null;
+                    response = httpClient.execute(httpGet);
+                    if (response == null) {
                         Toast.makeText(LoginAndRegist.this, "服务器无响应", Toast.LENGTH_SHORT).show();
                         return;
                     }

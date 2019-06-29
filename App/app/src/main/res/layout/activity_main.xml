@@ -104,6 +104,7 @@
                 android:drawableLeft="@drawable/lock"
                 android:hint="@string/Password"
                 android:inputType="textPassword"
+                android:textColor="@color/textcolor"
                 android:textColorLink="#FFFFFF" />
 
 

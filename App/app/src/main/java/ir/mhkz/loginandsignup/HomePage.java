@@ -87,7 +87,7 @@ public class HomePage extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             //单击搜索是激发该方法
             public boolean onQueryTextSubmit(String newtext) {
-                Toast.makeText(HomePage.this, "搜索框暂时不可用", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(HomePage.this, "搜索框暂时不可用", Toast.LENGTH_SHORT).show();
 
                 String serv = "http://203.195.155.114:3389/HealthApp?choise=5&food="+newtext;
                 HttpGet httpGet = new HttpGet(serv);

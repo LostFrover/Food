@@ -64,15 +64,15 @@ public class HealthData extends AppCompatActivity {
 
                     String blsF,blfF,hF,bdfF,wF,btF,wlF;
                     String []arr=result.split(", '");
-                    blsF=arr[0];    blfF=arr[1];    hF=arr[2];      bdfF=arr[3];
-                    wF=arr[4];      btF=arr[6];     wlF=arr[7];
-                    blsF=blsF.substring(16);
+                    blsF=arr[5];    blfF=arr[4];    hF=arr[6];      bdfF=arr[7];
+                    wF=arr[3];      btF=arr[1];     wlF=arr[0];
+                    blsF=blsF.substring(13);
                     blfF=blfF.substring(11);
                     hF=hF.substring(9);
-                    bdfF=bdfF.substring(10);
+                    bdfF=bdfF.substring(10,bdfF.length()-2);
                     wF=wF.substring(9);
                     btF=btF.substring(7);
-                    wlF=wlF.substring(12,wlF.length()-2);
+                    wlF=wlF.substring(15);
 
                     h=findViewById(R.id.Height);    w=findViewById((R.id.Weight));
                     bt=findViewById(R.id.Beat);     bdf=findViewById(R.id.BodyFat);

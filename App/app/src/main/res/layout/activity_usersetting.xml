@@ -34,82 +34,35 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="用户名:"
-        android:textColor="@color/black"
-        android:textSize="36sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
     <LinearLayout
         android:layout_width="454dp"
         android:layout_height="491dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="65dp">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="身高:"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="用户名:"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
-        </TableRow>
+                android:textSize="36sp" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="65dp">
-
-            <TextView
-                android:id="@+id/WeightTitle"
+            <EditText
+                android:id="@+id/editText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                tools:text="体重：" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="65dp">
-
-            <TextView
-                android:id="@+id/BodyFatTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                tools:text="体脂率：" />
-        </TableRow>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="45dp" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="65dp">
-
-            <TextView
-                android:id="@+id/adviceTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="性别："
-                android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
         </TableRow>
 
         <TableRow
@@ -123,6 +76,13 @@
                 android:text="密码："
                 android:textColor="@color/black"
                 android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword" />
         </TableRow>
 
         <TableRow
@@ -136,7 +96,24 @@
                 android:text="电子邮箱："
                 android:textColor="@color/black"
                 android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textEmailAddress" />
         </TableRow>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 </android.support.constraint.ConstraintLayout>
