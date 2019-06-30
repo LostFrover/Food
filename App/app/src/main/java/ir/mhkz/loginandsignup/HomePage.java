@@ -102,8 +102,7 @@ public class HomePage extends AppCompatActivity {
                         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                         String result = "";
                         if(null!=(result = reader.readLine())) {
-                            result = result.substring(1,result.length()-1);
-                            Toast.makeText(HomePage.this, result, Toast.LENGTH_SHORT).show();
+                            result = result.substring(2,result.length()-2);
                             Intent intentRst = new Intent(HomePage.this,SearchResult.class);
                             intentRst.putExtra("result",result);
                             startActivity(intentRst);
