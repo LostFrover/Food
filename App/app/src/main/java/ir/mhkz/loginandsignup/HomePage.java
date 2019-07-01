@@ -55,6 +55,7 @@ public class HomePage extends AppCompatActivity {
         side_name.setText(name);
         TextView side_id = smh.findViewById(R.id.side_userid);
         side_id.setText(id);
+        //给侧边栏菜单添加按钮监听器
         ngv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -141,13 +142,11 @@ public class HomePage extends AppCompatActivity {
                 startActivityForResult(intent, REQ_1);
             }
         });
-
+            //让主线程可以访问Internet
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
-
-        //将给侧边栏菜单添加按钮监听器
 
     }
 

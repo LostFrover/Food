@@ -32,10 +32,10 @@ public class HealthData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health_data);
 
-        Intent intent = getIntent();
-        id=intent.getStringExtra("id");
-        name=intent.getStringExtra("name");
-        pwd=intent.getStringExtra("password");
+        Intent homepage = getIntent();
+        id= homepage.getStringExtra("id");
+        name= homepage.getStringExtra("name");
+        pwd= homepage.getStringExtra("password");
         ID=findViewById(R.id.ID);
         ID.setText(id);
         Name=findViewById(R.id.userName);

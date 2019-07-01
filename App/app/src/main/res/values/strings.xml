@@ -12,4 +12,5 @@
     <string name="registrationPage">用户注册</string>
     <string name="title_activity_home_page">HomePage</string>
     <string name="cameraBtn">点此拍照</string>
+    <string name="initNull">初始空</string>
 </resources>
