@@ -46,7 +46,7 @@ public class HomePage extends AppCompatActivity {
 
         final Intent intent = getIntent();
         name = intent.getStringExtra("username");
-        pwd = intent.getStringExtra("password");
+        pwd = intent.getStringExtra("pwd");
         id = intent.getStringExtra("id");
         //尝试修改用户信息显示
         NavigationView ngv=findViewById(R.id.nav_view_left);

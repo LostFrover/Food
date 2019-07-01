@@ -35,15 +35,18 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="397dp"
-        android:layout_height="580dp"
-        android:layout_marginStart="4dp"
+
+        android:layout_width="380dp"
+        android:layout_height="576dp"
+        android:layout_marginStart="20dp"
+
         android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <TableRow
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <TextView
@@ -70,13 +73,13 @@
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/user"
                 android:layout_width="334dp"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/Username"
-                android:inputType="textPersonName" />
+                android:text="TextView"
+                android:textSize="24sp" />
+
         </TableRow>
 
         <Space
@@ -84,7 +87,7 @@
             android:layout_height="20dp" />
 
         <TableRow
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="61dp">
 
             <TextView
@@ -118,11 +121,11 @@
         </TableRow>
 
         <TableRow
-            android:layout_width="407dp"
+            android:layout_width="match_parent"
             android:layout_height="213dp">
 
             <LinearLayout
-                android:layout_width="421dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
@@ -141,11 +144,12 @@
 
                     <EditText
                         android:id="@+id/formerPwd"
-                        android:layout_width="match_parent"
+                        android:layout_width="281dp"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="@string/Password"
+                        android:hint="原密码"
                         android:inputType="textPassword" />
+
                 </LinearLayout>
 
                 <Space
@@ -154,13 +158,13 @@
                     android:layout_weight="1" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/newPwdTitle"
-                        android:layout_width="202dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="新密码："
@@ -173,9 +177,11 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="Name" />
+                        android:hint="新密码"
+                        android:inputType="textPersonName" />
+
                 </LinearLayout>
+
 
                 <Space
                     android:layout_width="match_parent"
@@ -197,14 +203,15 @@
                         android:textColor="@color/black"
                         android:textSize="22sp" />
 
+
                     <EditText
                         android:id="@+id/ensureNP"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="Name" />
+                        android:hint="确认新密码"
+                        android:inputType="textPersonName" />
                 </LinearLayout>
 
             </LinearLayout>

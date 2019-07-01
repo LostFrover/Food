@@ -36,8 +36,9 @@
 
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="403dp"
-        android:layout_height="91dp"
+        android:layout_width="371dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
@@ -115,8 +116,9 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="472dp"
+        android:layout_width="386dp"
+        android:layout_height="473dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -124,7 +126,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tableLayout">
 
         <TableRow
-            android:id="@+id/RowHW"
+            android:id="@+id/RowHS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -152,6 +154,56 @@
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/sexTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="性别："
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+
+            <EditText
+                android:id="@+id/sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textColor="@color/textcolor"
+                android:textSize="20sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/RowBtW"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+
+                android:id="@+id/BeatTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="脉搏/心率："
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <EditText
+
+                android:id="@+id/Beat"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="(次/min)"
+                android:inputType="number"
+                android:text="0"
+                android:textColor="@color/textcolor"
+                android:textSize="20sp" />
+
+            <Space
+                android:layout_width="6dp"
+                android:layout_height="match_parent" />
+
+            <TextView
                 android:id="@+id/WeightTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -169,7 +221,6 @@
                 android:text="0.00"
                 android:textColor="@color/textcolor"
                 android:textSize="20sp" />
-
         </TableRow>
 
         <TableRow
@@ -267,36 +318,6 @@
                 android:text="0.00"
                 android:textColor="@color/textcolor"
                 android:textSize="20sp" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/RowBeat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/BeatTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="脉搏/心率："
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/Beat"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="(次/min)"
-                android:inputType="number"
-                android:text="0"
-                android:textColor="@color/textcolor"
-                android:textSize="20sp" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
         </TableRow>
 
         <Space

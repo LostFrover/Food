@@ -24,7 +24,7 @@ public class HealthData extends AppCompatActivity {
     String id="";
     String pwd="";
     String name="";
-    EditText h,w,bt,bdf,wl,blf,bls;
+    EditText h,w,bt,bdf,wl,blf,bls,sex;
     TextView ID,Name;
 
     @Override
@@ -62,23 +62,24 @@ public class HealthData extends AppCompatActivity {
                 String result = "";
                 if(null!=(result = reader.readLine())) {
 
-                    String blsF,blfF,hF,bdfF,wF,btF,wlF;
+                    String blsF,blfF,hF,bdfF,wF,btF,wlF,sexF;
                     String []arr=result.split(", '");
-                    blsF=arr[5];    blfF=arr[4];    hF=arr[6];      bdfF=arr[7];
-                    wF=arr[3];      btF=arr[1];     wlF=arr[0];
+                    blsF=arr[6];    blfF=arr[7];    hF=arr[0];      bdfF=arr[1];
+                    wF=arr[4];      btF=arr[5];     wlF=arr[3];     sexF=arr[2];
                     blsF=blsF.substring(13);
                     blfF=blfF.substring(11);
-                    hF=hF.substring(9);
-                    bdfF=bdfF.substring(10,bdfF.length()-2);
-                    wF=wF.substring(9);
+                    hF=hF.substring(9,h.length());
+                    bdfF=bdfF.substring(10);
+                    wF=wF.substring(12);
                     btF=btF.substring(7);
-                    wlF=wlF.substring(15);
+                    wlF=wlF.substring(12);
+                    sexF=sexF.substring(6);
 
                     h=findViewById(R.id.Height);    w=findViewById((R.id.Weight));
                     bt=findViewById(R.id.Beat);     bdf=findViewById(R.id.BodyFat);
                     wl=findViewById(R.id.Waistline);blf=findViewById(R.id.BloodFat);
-                    bls=findViewById(R.id.BloodSugar);
-                    h.setText(hF);      w.setText(wF);      bt.setText(btF);
+                    bls=findViewById(R.id.BloodSugar);  sex=findViewById(R.id.sex);
+                    h.setText(hF);      w.setText(wF);      bt.setText(btF);    sex.setText(sexF);
                     bdf.setText(bdfF);  wl.setText(wlF);    blf.setText(blfF);  bls.setText(blsF);
 
                 }
