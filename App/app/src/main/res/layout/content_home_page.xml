@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_light_background"
+    android:background="@color/sidemenubody"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="ir.mhkz.loginandsignup.HomePage"
     tools:showIn="@layout/activity_home_page">
@@ -13,7 +13,7 @@
         android:id="@+id/cameraBtn"
         android:layout_width="149dp"
         android:layout_height="142dp"
-        android:background="@color/cardview_shadow_end_color"
+        android:background="@color/cardview_light_background"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,8 +53,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="51dp"
-        android:layout_marginEnd="0dp"
-        android:background="@color/gray"
+        android:background="@color/head"
         android:baselineAligned="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -66,7 +65,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight="0"
-            android:background="@color/gray"
+            android:background="@color/head"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/detail" />
 
@@ -79,11 +78,12 @@
             android:id="@+id/searchView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@color/gray"
+            android:background="@color/head"
             android:divider="@drawable/search"
             android:queryHint="在此处输入搜索内容">
 
         </SearchView>
 
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

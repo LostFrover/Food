@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/settingsBackground"
+    android:background="@color/white"
     tools:context="ir.mhkz.loginandsignup.Account">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="51dp"
-        android:background="@color/cardview_light_background"
+        android:background="@color/head"
         android:baselineAligned="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -35,9 +35,9 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="454dp"
-        android:layout_height="491dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="397dp"
+        android:layout_height="580dp"
+        android:layout_marginStart="4dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
@@ -54,6 +54,10 @@
                 android:textColor="@color/black" />
         </TableRow>
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
         <TableRow
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -62,20 +66,22 @@
                 android:id="@+id/userTItle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
                 android:text="用户名:"
                 android:textColor="@color/black"
-                android:textSize="36sp" />
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/user"
-                android:layout_width="wrap_content"
+                android:layout_width="334dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/Username"
                 android:inputType="textPersonName" />
         </TableRow>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
         <TableRow
             android:layout_width="match_parent"
@@ -91,16 +97,12 @@
 
             <EditText
                 android:id="@+id/email"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/Email"
                 android:inputType="textEmailAddress" />
         </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="60dp" />
 
         <TableRow
             android:layout_width="match_parent"
@@ -111,16 +113,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="密码修改"
-                android:textColor="@android:color/holo_red_dark"
+                android:textColor="@color/head"
                 android:textSize="18sp" />
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="407dp"
+            android:layout_height="213dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="421dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
@@ -139,12 +141,17 @@
 
                     <EditText
                         android:id="@+id/formerPwd"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="@string/Password"
                         android:inputType="textPassword" />
                 </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -153,15 +160,16 @@
 
                     <TextView
                         android:id="@+id/newPwdTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="202dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="新密码："
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textSize="24sp" />
 
                     <EditText
                         android:id="@+id/newPwd"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
@@ -169,9 +177,14 @@
                         android:text="Name" />
                 </LinearLayout>
 
-                <LinearLayout
+                <Space
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="410dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
@@ -181,11 +194,12 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="确认新密码："
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textSize="22sp" />
 
                     <EditText
                         android:id="@+id/ensureNP"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
@@ -201,11 +215,15 @@
 
     <Button
         android:id="@+id/changeAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="247dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginEnd="80dp"
+        android:background="@color/sidemenuhead"
         android:text="修改"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 </android.support.constraint.ConstraintLayout>

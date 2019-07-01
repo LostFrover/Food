@@ -2,13 +2,14 @@
 <resources>
     <color name="colorPrimary">#99AD36</color>
     <color name="colorPrimaryDark">#78AD26</color>
-    <color name="colorAccent">#99AD36</color>
+    <color name="colorAccent">#4A7246</color>
     <color name="white">#FFFFFF</color>
-    <color name="gray">#ACB9A2</color>
+    <color name="gray">#daddd8</color>
     <color name="black">#000000</color>
     <color name="yellow">#FBE544</color>
-    <color name="wrong">#bed742</color>
-    <color name="sidemenuhead">#C9DCC3</color>
-    <color name="settingsBackground">#C6E7CE</color>
+    <color name="wrong">#ea8943</color>
+    <color name="head">#009431</color>
+    <color name="sidemenuhead">#67A125</color>
+    <color name="sidemenubody">#fcfefe</color>
     <color name="textcolor">#738A6E</color>
 </resources>
