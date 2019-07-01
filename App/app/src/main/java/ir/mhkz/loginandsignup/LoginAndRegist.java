@@ -155,7 +155,7 @@ public class LoginAndRegist extends AppCompatActivity {
 
                             Intent intent = new Intent(LoginAndRegist.this, HomePage.class);
                             intent.putExtra("username",remname);
-                            intent.putExtra("password",rempassword);
+                            intent.putExtra("pwd",rempassword);
                             intent.putExtra("id",line);
                             startActivity(intent);
                             LoginAndRegist.this.finish();
@@ -171,6 +171,7 @@ public class LoginAndRegist extends AppCompatActivity {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                    Toast.makeText(LoginAndRegist.this, "服务器无响应", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -266,6 +267,7 @@ public class LoginAndRegist extends AppCompatActivity {
 
                             } catch (Exception e) {
                                 e.printStackTrace();
+                                Toast.makeText(LoginAndRegist.this, "服务器无响应", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
