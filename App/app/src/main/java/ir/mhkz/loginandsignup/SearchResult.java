@@ -57,12 +57,13 @@ public class SearchResult extends AppCompatActivity {
                             TextView item = (TextView)lv.getChildAt(i);
                             String foodname =item.getText().toString();
                             foodname = foodname.split("\n")[0];
+                            foodname = foodname.replace(" ","%20");
 
                             String serv = "http://203.195.155.114:3389/HealthApp?choise=7&foodname="+foodname;
-                            HttpGet httpGet = new HttpGet(serv);
-                            HttpClient httpClient = new DefaultHttpClient();
                             //发送请求
                             try {
+                                HttpGet httpGet = new HttpGet(serv);
+                                HttpClient httpClient = new DefaultHttpClient();
                                 HttpResponse response = httpClient.execute(httpGet);
                                 try {
                                     InputStream inputStream = response.getEntity().getContent();
@@ -71,7 +72,7 @@ public class SearchResult extends AppCompatActivity {
                                     if(null!=(result = reader.readLine())) {
                                         result = result.substring(2);
                                         String[] temp1=result.split("[}]]");
-                                        temp1[1] = temp1[1].substring(4);
+                                        temp1[1] = temp1[1].substring(5);
                                         String[] temp2=temp1[0].split(", ");
                                         temp2[0] = temp2[0].substring(9,temp2[0].length()-1);
                                         temp2[1] = temp2[1].substring(9,temp2[1].length()-1);

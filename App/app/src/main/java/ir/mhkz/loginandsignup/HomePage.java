@@ -1,14 +1,20 @@
 package ir.mhkz.loginandsignup;
 
+import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +30,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
@@ -34,6 +41,7 @@ public class HomePage extends AppCompatActivity {
     String name="";
     String pwd="";
     String id="";
+    boolean picChoise;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,8 +146,27 @@ public class HomePage extends AppCompatActivity {
         cameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);//调用系统camera
-                startActivityForResult(intent, REQ_1);
+                AlertDialog picc = new AlertDialog.Builder(HomePage.this)
+                    .setMessage("请选择图片来源")
+                    .setNegativeButton("本机相册",new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            picChoise = true;
+                            Intent album = new Intent();
+                            album.setAction(Intent.ACTION_PICK);
+                            album.setType("image/*");
+                            startActivityForResult(album, REQ_1);
+                        }
+                    })
+                    .setPositiveButton("直接拍摄",new DialogInterface.OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            picChoise = false;
+                            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);//调用系统camera
+                            startActivityForResult(intent, REQ_1);
+                        }
+                    }).create();
+                picc.show();
             }
         });
             //让主线程可以访问Internet
@@ -154,11 +181,32 @@ public class HomePage extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == RESULT_OK) {
-            if (requestCode == REQ_1) {
-                Bundle bundle = data.getExtras();//获得图片的二进制流
-                Bitmap bitmap = (Bitmap) bundle.get("data");
-                mImageView.setImageBitmap(bitmap);
+        if (picChoise) {
+            if (resultCode == RESULT_OK) {
+                //获取选中文件的定位符
+                Uri uri = data.getData();
+                Log.e("uri", uri.toString());
+                //使用content的接口
+                ContentResolver cr = this.getContentResolver();
+                try {
+                    //获取图片
+                    Bitmap bitmap = BitmapFactory.decodeStream(cr.openInputStream(uri));
+                    mImageView.setImageBitmap(bitmap);
+                } catch (FileNotFoundException e) {
+                    Log.e("Exception", e.getMessage(), e);
+                }
+                super.onActivityResult(requestCode, resultCode, data);
+            } else {
+                //操作错误或没有选择图片
+                Log.i("MainActivtiy", "operation error");
+            }
+        } else {
+            if (resultCode == RESULT_OK) {
+                if (requestCode == REQ_1) {
+                    Bundle bundle = data.getExtras();//获得图片的二进制流
+                    Bitmap bitmap = (Bitmap) bundle.get("data");
+                    mImageView.setImageBitmap(bitmap);
+                }
             }
         }
     }
