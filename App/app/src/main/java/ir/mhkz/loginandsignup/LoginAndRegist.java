@@ -185,7 +185,7 @@ public class LoginAndRegist extends AppCompatActivity {
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(LoginAndRegist.this, "服务器无响应", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginAndRegist.this,e.getMessage(),  Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -291,7 +291,7 @@ public class LoginAndRegist extends AppCompatActivity {
 
                             } catch (Exception e) {
                                 e.printStackTrace();
-                                Toast.makeText(LoginAndRegist.this, "服务器无响应", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginAndRegist.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     }

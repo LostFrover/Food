@@ -140,5 +140,21 @@ public class HealthData extends AppCompatActivity {
             }
         });
 
+        dataAnaly();
+
+    }
+    //这里将添加档案分析函数
+    private void dataAnaly()
+    {
+        String report="";
+        //身高体重判断
+
+        //体脂腰围
+
+        //血糖血脂判断
+
+        //脉搏
+
+        //
     }
 }

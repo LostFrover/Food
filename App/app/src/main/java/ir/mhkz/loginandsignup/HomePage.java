@@ -14,6 +14,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -26,13 +27,21 @@ import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.protocol.HTTP;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomePage extends AppCompatActivity {
     private SearchView searchView;
@@ -180,7 +189,7 @@ public class HomePage extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        Bitmap bitmap = null;
         if (picChoise) {
             if (resultCode == RESULT_OK) {
                 //获取选中文件的定位符
@@ -190,7 +199,7 @@ public class HomePage extends AppCompatActivity {
                 ContentResolver cr = this.getContentResolver();
                 try {
                     //获取图片
-                    Bitmap bitmap = BitmapFactory.decodeStream(cr.openInputStream(uri));
+                    bitmap = BitmapFactory.decodeStream(cr.openInputStream(uri));
                     mImageView.setImageBitmap(bitmap);
                 } catch (FileNotFoundException e) {
                     Log.e("Exception", e.getMessage(), e);
@@ -204,14 +213,61 @@ public class HomePage extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 if (requestCode == REQ_1) {
                     Bundle bundle = data.getExtras();//获得图片的二进制流
-                    Bitmap bitmap = (Bitmap) bundle.get("data");
+                    bitmap = (Bitmap) bundle.get("data");
                     mImageView.setImageBitmap(bitmap);
                 }
             }
         }
+        ByteArrayOutputStream bos=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 40, bos);//参数100表示不压缩
+        byte[] bytes=bos.toByteArray();
+        String pic = Base64.encodeToString(bytes,Base64.DEFAULT);
         //将在这里添加图片上传
+        String serv = "http://203.195.155.114:443/post";
+        HttpPost httpPost = new HttpPost(serv);
+        HttpClient httpClient = new DefaultHttpClient();
+        try {
+            List<BasicNameValuePair> list = new ArrayList<BasicNameValuePair>();
+            list.add(new BasicNameValuePair("choise","2"));
+            list.add(new BasicNameValuePair("id",id));
+            list.add(new BasicNameValuePair("pic",pic));
+            httpPost.setEntity(new UrlEncodedFormEntity(list, HTTP.UTF_8));// 设置请求参数
+        } catch (UnsupportedEncodingException e1) {
+            Toast.makeText(HomePage.this, "发送失败", Toast.LENGTH_SHORT).show();
+        }
+        //发送请求
+        try {
+            HttpResponse response = null;
+            response = httpClient.execute(httpPost);
+            if (response == null) {
+                Toast.makeText(HomePage.this, "服务器无响应", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            try {
+                InputStream inputStream = response.getEntity().getContent();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+                String result = "";
+                String line = reader.readLine();
+                if(!(line.equals("Failed")) ) {
+                    result+=line;
+                    Toast.makeText(HomePage.this, result, Toast.LENGTH_SHORT).show();
 
+                    return;
+                }
+                else{
+                    Toast.makeText(HomePage.this, line, Toast.LENGTH_SHORT).show();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(HomePage.this,e.getMessage(),  Toast.LENGTH_SHORT).show();
+        }
     }
+
 }
 
 
