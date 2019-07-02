@@ -38,12 +38,12 @@ public class SearchResult extends AppCompatActivity {
             String[] rstarr = result.split("[}], [{]");
             for (int i = 0; i < rstarr.length; i++) {
                 String[] temp = rstarr[i].split(", ", 2);
-                String heat = temp[0].substring(9, temp[0].length() - 1);
-                String name = temp[1].substring(9, temp[1].length() - 1);
-                rstarr[i] = name + "\n" + heat;
+                String heat = temp[1].substring(9, temp[1].length() - 1);
+                String name = temp[0].substring(9, temp[0].length() - 1);
+                rstarr[i] = name + "\n" + heat+"\t"+i;
             }
             final ListView lv = findViewById(R.id.listView);
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.listview_item_style, rstarr);//新建并配置ArrayAapeter
+            final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.listview_item_style, rstarr);//新建并配置ArrayAapeter
             lv.setAdapter(adapter);
 
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -54,12 +54,12 @@ public class SearchResult extends AppCompatActivity {
                         default:
                             Toast.makeText(SearchResult.this, "(测试用功能)你点击了" + i + "项", Toast.LENGTH_SHORT).show();
                             //二次查询
-                            TextView item = (TextView)lv.getChildAt(i);
+                            TextView item = (TextView) adapter.getView(i,view,lv);
                             String foodname =item.getText().toString();
                             foodname = foodname.split("\n")[0];
                             foodname = foodname.replace(" ","%20");
 
-                            String serv = "http://203.195.155.114:3389/HealthApp?choise=7&foodname="+foodname;
+                            String serv = "http://203.195.155.114:3389/get?choise=7&foodname="+foodname;
                             //发送请求
                             try {
                                 HttpGet httpGet = new HttpGet(serv);
@@ -82,7 +82,7 @@ public class SearchResult extends AppCompatActivity {
                                         final View dialogView = inflater.inflate(R.layout.detail, null);
                                         dialog.setView(dialogView);
                                         TextView t1 = dialogView.findViewById(R.id.t1),t2 = dialogView.findViewById(R.id.t2);
-                                        t1.setText(temp2[1]);   t2.setText(temp2[0]);
+                                        t1.setText(temp2[0]);   t2.setText(temp2[1]);
                                         ImageView pic = dialogView.findViewById(R.id.pic);
                                         Bitmap bitmap = null;
                                         try {

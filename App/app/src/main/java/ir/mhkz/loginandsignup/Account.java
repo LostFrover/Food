@@ -115,7 +115,7 @@ public class Account extends AppCompatActivity {
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     Toast.makeText(Account.this, "已修改，请重新登录", Toast.LENGTH_SHORT).show();
                                     //上传至服务器进行修改账户操作内容
-                                    String serv = "http://203.195.155.114:3389/HealthApp?choise=6&name="+user.getText().toString()
+                                    String serv = "http://203.195.155.114:3389/get?choise=6&name="+user.getText().toString()
                                             +"&oldpwd="+fPwd.getText().toString()+"&newpwd="+nPwd.getText().toString();//将用于修改用户登录信息
                                     HttpGet httpGet = new HttpGet(serv);
                                     HttpClient httpClient = new DefaultHttpClient();

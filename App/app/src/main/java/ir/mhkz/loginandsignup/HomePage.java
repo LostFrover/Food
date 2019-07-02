@@ -97,7 +97,7 @@ public class HomePage extends AppCompatActivity {
             //单击搜索是激发该方法
             public boolean onQueryTextSubmit(String newtext) {
                 //Toast.makeText(HomePage.this, "搜索框暂时不可用", Toast.LENGTH_SHORT).show();
-                String serv = "http://203.195.155.114:3389/HealthApp?choise=5&food="+newtext;
+                String serv = "http://203.195.155.114:3389/get?choise=5&food="+newtext;
                 HttpGet httpGet = new HttpGet(serv);
                 HttpClient httpClient = new DefaultHttpClient();
                 //发送请求
@@ -210,7 +210,7 @@ public class HomePage extends AppCompatActivity {
             }
         }
         //将在这里添加图片上传
-        
+
     }
 }
 

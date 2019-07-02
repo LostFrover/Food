@@ -47,7 +47,7 @@ public class HealthData extends AppCompatActivity {
             StrictMode.setThreadPolicy(policy);
         }
 
-        String serv = "http://203.195.155.114:3389/HealthApp?choise=4&id="+id;
+        String serv = "http://203.195.155.114:3389/get?choise=4&id="+id;
         HttpGet httpGet = new HttpGet(serv);
         HttpClient httpClient = new DefaultHttpClient();
         //发送请求
@@ -96,12 +96,10 @@ public class HealthData extends AppCompatActivity {
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String servC = "http://203.195.155.114:3389/HealthApp?choise=3&id="+id+"&height="+h.getText().toString()+
+                String servC = "http://203.195.155.114:3389/get?choise=3&id="+id+"&height="+h.getText().toString()+
                         "&weight="+w.getText().toString()+"&waistline="+wl.getText().toString()+"&beat="+bt.getText().toString()+
                         "&bodyFat="+bdf.getText().toString()+"&bloodSugar="+bls.getText().toString()+"&bloodFat="+blf.getText().toString();
-                        //http://203.195.155.114:3389/HealthApp?choise=3&id=6&height=150
-                        // &weight=44&waistline=4&beat=4
-                        // &bodyFat=4&bloodSugar=7&bloodFat=7
+
                 HttpGet httpGet = new HttpGet(servC);
                 HttpClient httpClient = new DefaultHttpClient();
                 //发送请求

@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@color/colorPrimaryDark"
-            android:dividerHeight="1dp"
+            android:dividerHeight="5dp"
             android:textAlignment="center" />
 
     </LinearLayout>

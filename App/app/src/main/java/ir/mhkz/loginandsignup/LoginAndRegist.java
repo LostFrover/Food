@@ -18,13 +18,19 @@ import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.protocol.HTTP;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginAndRegist extends AppCompatActivity {
 
@@ -131,15 +137,23 @@ public class LoginAndRegist extends AppCompatActivity {
                 }
 
                 //之后post用户名与密码，比对数据库后返回结果
-                //服务器访问接口  ip:端口(3389)?内容
 
-                 String serv = "http://203.195.155.114:3389/HealthApp?choise=1&name=" + remname + "&pwd=" + rempassword ;
-                HttpGet httpGet = new HttpGet(serv);
+                String serv = "http://203.195.155.114:443/post";
+                HttpPost httpPost = new HttpPost(serv);
                 HttpClient httpClient = new DefaultHttpClient();
+                try {
+                    List<BasicNameValuePair> list = new ArrayList<BasicNameValuePair>();
+                    list.add(new BasicNameValuePair("choise","1"));
+                    list.add(new BasicNameValuePair("name", remname));
+                    list.add(new BasicNameValuePair("pwd",rempassword));
+                    httpPost.setEntity(new UrlEncodedFormEntity(list, HTTP.UTF_8));// 设置请求参数
+                } catch (UnsupportedEncodingException e1) {
+                    Toast.makeText(LoginAndRegist.this, "发送失败", Toast.LENGTH_SHORT).show();
+                }
                 //发送请求
                 try {
                     HttpResponse response = null;
-                    response = httpClient.execute(httpGet);
+                    response = httpClient.execute(httpPost);
                     if (response == null) {
                         Toast.makeText(LoginAndRegist.this, "服务器无响应", Toast.LENGTH_SHORT).show();
                         return;
@@ -240,12 +254,22 @@ public class LoginAndRegist extends AppCompatActivity {
                             String email = reg_email.getText().toString();
                             //向服务器请求注册，并发送用户名，邮箱，密码
                             //用户编号自动+=1
-                            String serv = "http://203.195.155.114:3389/HealthApp?choise=0&name=" + name + "&pwd=" + pwd + "&email=" + email;
-                            HttpGet httpGet = new HttpGet(serv);
+                            String serv = "http://203.195.155.114:443/post";
+                            HttpPost httpPost = new HttpPost(serv);
                             HttpClient httpClient = new DefaultHttpClient();
                             //发送请求
                             try {
-                                HttpResponse response = httpClient.execute(httpGet);
+                                try {
+                                    List<BasicNameValuePair> list = new ArrayList<BasicNameValuePair>();
+                                    list.add(new BasicNameValuePair("choise","1"));
+                                    list.add(new BasicNameValuePair("name", name));
+                                    list.add(new BasicNameValuePair("pwd",pwd));
+                                    list.add(new BasicNameValuePair("email",email));
+                                    httpPost.setEntity(new UrlEncodedFormEntity(list, HTTP.UTF_8));// 设置请求参数
+                                } catch (UnsupportedEncodingException e1) {
+                                    Toast.makeText(LoginAndRegist.this, "发送失败", Toast.LENGTH_SHORT).show();
+                                }
+                                HttpResponse response = httpClient.execute(httpPost);
                                 if (null == response) {
                                     Toast.makeText(LoginAndRegist.this, "服务器无响应", Toast.LENGTH_SHORT).show();
                                     return;
