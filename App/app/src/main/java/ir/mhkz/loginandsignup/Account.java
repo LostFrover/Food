@@ -50,30 +50,30 @@ public class Account extends AppCompatActivity {
             StrictMode.setThreadPolicy(policy);
         }
 
-        String serv = "http://203.195.155.114:3389/HealthApp?choise=7&food=";//将用于查询email
-        HttpGet httpGet = new HttpGet(serv);
-        HttpClient httpClient = new DefaultHttpClient();
-        //发送请求——查询email
-        try {
-            HttpResponse response = httpClient.execute(httpGet);
-            if (null == response) {
-                Toast.makeText(this, "服务器无响应", Toast.LENGTH_SHORT).show();
-            }
-            try {
-                InputStream inputStream = response.getEntity().getContent();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-                String result = "";
-                if(null!=(result = reader.readLine())) {
-                    email.setText(result);
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        String serv = "http://203.195.155.114:3389/HealthApp?choise=7&food=";//将用于查询email
+//        HttpGet httpGet = new HttpGet(serv);
+//        HttpClient httpClient = new DefaultHttpClient();
+//        //发送请求——查询email
+//        try {
+//            HttpResponse response = httpClient.execute(httpGet);
+//            if (null == response) {
+//                Toast.makeText(this, "服务器无响应", Toast.LENGTH_SHORT).show();
+//            }
+//            try {
+//                InputStream inputStream = response.getEntity().getContent();
+//                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+//                String result = "";
+//                if(null!=(result = reader.readLine())) {
+//                    email.setText(result);
+//                }
+//
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
 
         ImageButton back=findViewById(R.id.backBtn);
