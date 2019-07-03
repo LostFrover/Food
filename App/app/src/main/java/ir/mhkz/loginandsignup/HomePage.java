@@ -120,7 +120,6 @@ public class HomePage extends AppCompatActivity {
                         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                         String result = "";
                         if(null!=(result = reader.readLine())) {
-                            result = result.substring(2,result.length()-2);
                             Intent intentRst = new Intent(HomePage.this,SearchResult.class);
                             intentRst.putExtra("result",result);
                             startActivity(intentRst);
@@ -224,6 +223,7 @@ public class HomePage extends AppCompatActivity {
         String pic = Base64.encodeToString(bytes,Base64.DEFAULT);
         //将在这里添加图片上传
         String serv = "http://203.195.155.114:443/post";
+        //String serv = "http://203.195.155.114:8080/PatternRecognition";  //API测试
         HttpPost httpPost = new HttpPost(serv);
         HttpClient httpClient = new DefaultHttpClient();
         try {

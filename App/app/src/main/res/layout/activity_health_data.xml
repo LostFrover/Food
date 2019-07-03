@@ -7,6 +7,7 @@
     android:background="@color/white"
     tools:context="ir.mhkz.loginandsignup.HealthData">
 
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -34,321 +35,327 @@
 
     </LinearLayout>
 
-    <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="371dp"
-        android:layout_height="84dp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintStart_toStartOf="parent"
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-        <TableRow
-            android:id="@+id/RowUserNum"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/userTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="用户编号:"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/ID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="空"
-                android:textColor="@color/textcolor"
-                android:textSize="14sp" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="20dp" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/RowUser"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/userTitle2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="用户名:"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/userName"
-                android:layout_width="312dp"
-                android:layout_height="42dp"
-                android:layout_weight="1"
-                android:text="空"
-                android:textColor="@color/textcolor"
-                android:textSize="24sp" />
-        </TableRow>
-
-    </TableLayout>
-
-    <Button
-        android:id="@+id/change"
-        android:layout_width="247dp"
-        android:layout_height="69dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="500dp"
-        android:layout_marginEnd="80dp"
-        android:background="@color/sidemenuhead"
-        android:text="修改"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <LinearLayout
-        android:layout_width="386dp"
-        android:layout_height="473dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout">
-
-        <TableRow
-            android:id="@+id/RowHS"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/HeightTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="身高："
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/Height"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="(cm)"
-                android:inputType="numberDecimal"
-                android:text="0.00"
-                android:textColor="@color/textcolor"
-                android:textSize="20sp" />
-
-            <Space
-                android:layout_width="40dp"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/sexTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="性别："
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-
-            <EditText
-                android:id="@+id/sex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:textColor="@color/textcolor"
-                android:textSize="20sp" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/RowBtW"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/WeightTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="体重："
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/Weight"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="(kg)"
-                android:inputType="number|numberDecimal"
-                android:text="0.00"
-                android:textColor="@color/textcolor"
-                android:textSize="20sp" />
-
-            <Space
-                android:layout_width="40dp"
-                android:layout_height="match_parent" />
-
-            <TextView
-
-                android:id="@+id/BeatTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="脉搏/心率："
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <EditText
-
-                android:id="@+id/Beat"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="(次/min)"
-                android:inputType="number"
-                android:text="0"
-                android:textColor="@color/textcolor"
-                android:textSize="20sp" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/RowBsWl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/BodyFatTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="体脂："
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/BodyFat"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="(%)"
-                android:inputType="number|numberDecimal"
-                android:text="0"
-                android:textColor="@color/textcolor"
-                android:textSize="20sp" />
-
-            <Space
-                android:layout_width="40dp"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/WaistlineTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="腰围："
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/Waistline"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="(cm)"
-                android:inputType="number|numberDecimal"
-                android:text="0.00"
-                android:textColor="@color/textcolor"
-                android:textSize="20sp" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/RowBsBf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/BloodFatTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="血脂："
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/BloodFat"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="(mmol/L)"
-                android:inputType="number|numberDecimal"
-                android:text="0.00"
-                android:textColor="@color/textcolor"
-                android:textSize="20sp" />
-
-            <Space
-                android:layout_width="40dp"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/BloodSugarTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="血糖："
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/BloodSugar"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="(mmol/L)"
-                android:inputType="number|numberDecimal"
-                android:text="0.00"
-                android:textColor="@color/textcolor"
-                android:textSize="20sp" />
-        </TableRow>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="35dp" />
-
         <LinearLayout
-            android:id="@+id/RowAdvice"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/adviceTitle"
+            <TableLayout
+                android:id="@+id/tableLayout"
+                android:layout_width="371dp"
+                android:layout_height="84dp"
+                android:layout_marginStart="20dp">
+
+                <TableRow
+                    android:id="@+id/RowUserNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/userTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="用户编号:"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/ID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="空"
+                        android:textColor="@color/textcolor"
+                        android:textSize="14sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/RowUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/userTitle2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="用户名:"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/userName"
+                        android:layout_width="312dp"
+                        android:layout_height="42dp"
+                        android:layout_weight="1"
+                        android:text="空"
+                        android:textColor="@color/textcolor"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp" />
+                </TableRow>
+
+            </TableLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="饮食建议："
-                android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/advice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="暂无建议"
-                android:textColor="#555555"
-                android:textSize="18sp" />
+                <TableRow
+                    android:id="@+id/RowHS"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/HeightTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="身高："
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/Height"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="(cm)"
+                        android:inputType="numberDecimal"
+                        android:text="0.00"
+                        android:textColor="@color/textcolor"
+                        android:textSize="20sp" />
+
+                    <Space
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/sexTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="性别："
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+
+                    <EditText
+                        android:id="@+id/sex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/textcolor"
+                        android:textSize="20sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/RowBtW"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/WeightTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="体重："
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/Weight"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="(kg)"
+                        android:inputType="number|numberDecimal"
+                        android:text="0.00"
+                        android:textColor="@color/textcolor"
+                        android:textSize="20sp" />
+
+                    <Space
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+
+                        android:id="@+id/BeatTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="脉搏/心率："
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+
+                        android:id="@+id/Beat"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="(次/min)"
+                        android:inputType="number"
+                        android:text="0"
+                        android:textColor="@color/textcolor"
+                        android:textSize="20sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/RowBsWl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/BodyFatTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="体脂："
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/BodyFat"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="(%)"
+                        android:inputType="number|numberDecimal"
+                        android:text="0"
+                        android:textColor="@color/textcolor"
+                        android:textSize="20sp" />
+
+                    <Space
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/WaistlineTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="腰围："
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/Waistline"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="(cm)"
+                        android:inputType="number|numberDecimal"
+                        android:text="0.00"
+                        android:textColor="@color/textcolor"
+                        android:textSize="20sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/RowBsBf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/BloodFatTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="血脂："
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/BloodFat"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="(mmol/L)"
+                        android:inputType="number|numberDecimal"
+                        android:text="0.00"
+                        android:textColor="@color/textcolor"
+                        android:textSize="20sp" />
+
+                    <Space
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/BloodSugarTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="血糖："
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/BloodSugar"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="(mmol/L)"
+                        android:inputType="number|numberDecimal"
+                        android:text="0.00"
+                        android:textColor="@color/textcolor"
+                        android:textSize="20sp" />
+                </TableRow>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp" />
+
+                <LinearLayout
+                    android:id="@+id/RowAdvice"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/adviceTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="饮食建议："
+                        android:textColor="@color/black"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/advice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="暂无建议"
+                        android:textColor="#555555"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/change"
+                android:layout_width="247dp"
+                android:layout_height="69dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="500dp"
+                android:layout_marginEnd="80dp"
+                android:background="@color/sidemenuhead"
+                android:text="修改" />
 
         </LinearLayout>
+    </ScrollView>
 
-    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

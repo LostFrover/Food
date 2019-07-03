@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,9 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -33,15 +37,23 @@ public class SearchResult extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
         Intent homepage = getIntent();
+        String []rstarr = new String[0];
         String result = homepage.getStringExtra("result");
-        if(!result.equals("il")) {
-            String[] rstarr = result.split("[}], [{]");
-            for (int i = 0; i < rstarr.length; i++) {
-                String[] temp = rstarr[i].split(", ", 2);
-                String heat = temp[1].substring(9, temp[1].length() - 1);
-                String name = temp[0].substring(9, temp[0].length() - 1);
-                rstarr[i] = name + "\n" + heat+"\t"+i;
+        if(!result.equals("failed")) {
+            try {
+                JSONArray ja = new JSONArray(result);
+                rstarr = new String[ja.length()];
+                for(int i=0;i<ja.length();i++)
+                {
+                    JSONObject jo = ja.getJSONObject(i);
+                    rstarr[i] = jo.getString("name")+"\n"+jo.getString("heat");
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
+
+
             final ListView lv = findViewById(R.id.listView);
             final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.listview_item_style, rstarr);//新建并配置ArrayAapeter
             lv.setAdapter(adapter);
@@ -69,24 +81,32 @@ public class SearchResult extends AppCompatActivity {
                                     InputStream inputStream = response.getEntity().getContent();
                                     BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                                     String result = "";
+                                    String show="";
+                                    String []res={};
                                     if(null!=(result = reader.readLine())) {
-                                        result = result.substring(2);
-                                        String[] temp1=result.split("[}]]");
-                                        temp1[1] = temp1[1].substring(5);
-                                        String[] temp2=temp1[0].split(", ");
-                                        temp2[0] = temp2[0].substring(9,temp2[0].length()-1);
-                                        temp2[1] = temp2[1].substring(9,temp2[1].length()-1);
+                                        try {
+                                                res = result.split("[}]]");
+                                                result = res[0].substring(1)+"}";
+                                                JSONObject jo = new JSONObject(result);
+                                                show = "<font color=#ff0000>名称：</font>"+jo.getString("name")
+                                                        +"<br><font color=#ff0000>种类：</font>"+jo.getString("type")
+                                                        +"<br><font color=#ff0000>热量：</font>"+jo.getString("heat")
+                                                        +"<br><font color=#ff0000>建议：</font>"+jo.getString("advise").substring(3);
+
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
 
                                         AlertDialog.Builder dialog = new AlertDialog.Builder(SearchResult.this);
                                         LayoutInflater inflater = getLayoutInflater();
                                         final View dialogView = inflater.inflate(R.layout.detail, null);
                                         dialog.setView(dialogView);
-                                        TextView t1 = dialogView.findViewById(R.id.t1),t2 = dialogView.findViewById(R.id.t2);
-                                        t1.setText(temp2[0]);   t2.setText(temp2[1]);
+                                        TextView t1 = dialogView.findViewById(R.id.t1);
+                                        t1.setText(Html.fromHtml(show));
                                         ImageView pic = dialogView.findViewById(R.id.pic);
                                         Bitmap bitmap = null;
                                         try {
-                                            byte[] bitmapArray = Base64.decode(temp1[1], Base64.DEFAULT);
+                                            byte[] bitmapArray = Base64.decode(res[1].substring(4), Base64.DEFAULT);
                                             bitmap = BitmapFactory.decodeByteArray(bitmapArray, 0, bitmapArray.length);
                                         } catch (Exception e) {
                                             e.printStackTrace();

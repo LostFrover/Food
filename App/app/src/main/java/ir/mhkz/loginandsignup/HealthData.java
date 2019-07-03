@@ -15,6 +15,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -61,19 +62,18 @@ public class HealthData extends AppCompatActivity {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                 String result = "";
                 if(null!=(result = reader.readLine())) {
+                    JSONObject jo = new JSONObject(result.substring(1,result.length()-1));
 
                     String blsF,blfF,hF,bdfF,wF,btF,wlF,sexF;
-                    String []arr=result.split(", '");
-                    blsF=arr[6];    blfF=arr[7];    hF=arr[0];      bdfF=arr[1];
-                    wF=arr[4];      btF=arr[5];     wlF=arr[3];     sexF=arr[2];
-                    blsF=blsF.substring(13);
-                    blfF=blfF.substring(11);
-                    hF=hF.substring(9,h.length());
-                    bdfF=bdfF.substring(10);
-                    wF=wF.substring(12);
-                    btF=btF.substring(7);
-                    wlF=wlF.substring(12);
-                    sexF=sexF.substring(6);
+
+                    blsF=jo.getString("bloodSugar");
+                    blfF=jo.getString("bloodFat");
+                    hF=jo.getString("height");
+                    bdfF=jo.getString("bodyFat");
+                    wF=jo.getString("weight");
+                    btF=jo.getString("beat");
+                    wlF=jo.getString("waistline");
+                    sexF=jo.getString("sex");
 
                     h=findViewById(R.id.Height);    w=findViewById((R.id.Weight));
                     bt=findViewById(R.id.Beat);     bdf=findViewById(R.id.BodyFat);
@@ -96,7 +96,8 @@ public class HealthData extends AppCompatActivity {
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String servC = "http://203.195.155.114:3389/get?choise=3&id="+id+"&height="+h.getText().toString()+
+                Toast.makeText(HealthData.this, "点击按钮", Toast.LENGTH_SHORT).show();
+                String servC = "http://203.195.155.114:3389/get?choise=3&id="+id+"&sex="+sex.getText().toString()+"&height="+h.getText().toString()+
                         "&weight="+w.getText().toString()+"&waistline="+wl.getText().toString()+"&beat="+bt.getText().toString()+
                         "&bodyFat="+bdf.getText().toString()+"&bloodSugar="+bls.getText().toString()+"&bloodFat="+blf.getText().toString();
 
@@ -111,8 +112,8 @@ public class HealthData extends AppCompatActivity {
                     try {
                         InputStream inputStream = response.getEntity().getContent();
                         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-                        String result = "";
-                        if((result = reader.readLine()).equals("succeess")) {
+                        String result = reader.readLine();
+                        if(result.equals("succeess")) {
                             Toast.makeText(HealthData.this, "修改成功", Toast.LENGTH_SHORT).show();
                             Intent intentHealthD = new Intent(HealthData.this,HealthData.class);
                             intentHealthD.putExtra("id",id);
@@ -120,7 +121,8 @@ public class HealthData extends AppCompatActivity {
                             intentHealthD.putExtra("pwd",pwd);
                             startActivity(intentHealthD);
                             HealthData.this.finish();
-                        }
+                        }else
+                            Toast.makeText(HealthData.this, "修改失败", Toast.LENGTH_SHORT).show();
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -128,6 +130,7 @@ public class HealthData extends AppCompatActivity {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                    Toast.makeText(HealthData.this, "修改失败", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -147,7 +150,34 @@ public class HealthData extends AppCompatActivity {
     private void dataAnaly()
     {
         String report="";
+        double hd,wd,wld,blsd,blfd;
+        hd = Double.valueOf(h.getText().toString());
+        wd = Double.valueOf(w.getText().toString());
+        wld = Double.valueOf(wl.getText().toString());
+        blsd = Double.valueOf(bls.getText().toString());
+        blfd = Double.valueOf(blf.getText().toString());
+        int btd,bdfd,sexd;
+        btd = Integer.valueOf(bt.getText().toString());
+        bdfd = Integer.valueOf(bdf.getText().toString());
+        if(sex.getText().toString().equals("男"))
+            sexd=1;
+        else if(sex.getText().toString().equals("女"))
+            sexd=0;
+        else
+            sexd=-1;
         //身高体重判断
+        switch (sexd) {
+            case 1:
+
+                break;
+            case 0:
+
+                break;
+            case -1:
+            default:
+
+                break;
+        }
 
         //体脂腰围
 

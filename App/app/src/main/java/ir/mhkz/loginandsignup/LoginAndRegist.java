@@ -163,7 +163,7 @@ public class LoginAndRegist extends AppCompatActivity {
                         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                         String result = "用户编号";
                         String line = reader.readLine();
-                        if(!(line.equals("Failed")) ) {
+                        if((!line.equals("Failed"))&& (!line.matches("^(<html>)(\\s)*"))) {
                             result+=line;
                             Toast.makeText(LoginAndRegist.this, result, Toast.LENGTH_SHORT).show();
 
@@ -279,8 +279,9 @@ public class LoginAndRegist extends AppCompatActivity {
                                     InputStream inputStream = response.getEntity().getContent();
                                     BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                                     String result = "";
-                                    if(null!=(result = reader.readLine())) {
-                                        Toast.makeText(LoginAndRegist.this, result, Toast.LENGTH_SHORT).show();
+                                    result = reader.readLine();
+                                    if( (result.equals("failed")) && (result.matches("^(<html>)(\\s)*") ) ) {
+                                        Toast.makeText(LoginAndRegist.this, "注册失败", Toast.LENGTH_SHORT).show();
                                         dia.dismiss();
                                         return;
                                     }
