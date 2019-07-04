@@ -48,7 +48,7 @@ public class HealthData extends AppCompatActivity {
             StrictMode.setThreadPolicy(policy);
         }
 
-        String serv = "http://203.195.155.114:3389/get?choise=4&id="+id;
+        String serv = "http://203.195.155.114:3389/HealthDataGet?id="+id;
         HttpGet httpGet = new HttpGet(serv);
         HttpClient httpClient = new DefaultHttpClient();
         //发送请求
@@ -97,7 +97,7 @@ public class HealthData extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(HealthData.this, "点击按钮", Toast.LENGTH_SHORT).show();
-                String servC = "http://203.195.155.114:3389/get?choise=3&id="+id+"&sex="+sex.getText().toString()+"&height="+h.getText().toString()+
+                String servC = "http://203.195.155.114:3389/HealthDtaPost?id="+id+"&sex="+sex.getText().toString()+"&height="+h.getText().toString()+
                         "&weight="+w.getText().toString()+"&waistline="+wl.getText().toString()+"&beat="+bt.getText().toString()+
                         "&bodyFat="+bdf.getText().toString()+"&bloodSugar="+bls.getText().toString()+"&bloodFat="+blf.getText().toString();
 
@@ -143,7 +143,7 @@ public class HealthData extends AppCompatActivity {
             }
         });
 
-        dataAnaly();
+        //dataAnaly();
 
     }
     //这里将添加档案分析函数
@@ -166,16 +166,48 @@ public class HealthData extends AppCompatActivity {
         else
             sexd=-1;
         //身高体重判断
+        int BMI;
+        double standerdW;
         switch (sexd) {
-            case 1:
-
+            case 1://男
+                standerdW = (hd-80)*0.7;
+                if(standerdW*0.9<wd&&wd<standerdW*1.1)
+                    BMI=0;
+                else if(standerdW*0.8<wd&&wd<standerdW*0.9)
+                        BMI=-1;
+                else if(wd<standerdW*0.8)
+                    BMI=-2;
+                else if(standerdW*1.1<wd&&wd<standerdW*1.2)
+                    BMI=1;
+                else if(wd<standerdW*1.2)
+                    BMI=2;
                 break;
-            case 0:
-
+            case 0://女
+                standerdW = (hd-70)*0.6;
+                if(standerdW*0.9<wd&&wd<standerdW*1.1)
+                    BMI=0;
+                else if(standerdW*0.8<wd&&wd<standerdW*0.9)
+                    BMI=-1;
+                else if(wd<standerdW*0.8)
+                    BMI=-2;
+                else if(standerdW*1.1<wd&&wd<standerdW*1.2)
+                    BMI=1;
+                else if(wd<standerdW*1.2)
+                    BMI=2;
                 break;
-            case -1:
+            case -1://未知
             default:
-
+                standerdW = wd/hd/hd;
+                if(18.5<standerdW&&standerdW<24)
+                    BMI=0;
+                else if(14.5<standerdW&&standerdW<18.5)
+                    BMI=-1;
+                else if(standerdW<14.5)
+                    BMI=-2;
+                else if(24<standerdW&&standerdW<28)
+                    BMI=1;
+                else if(28<standerdW)
+                    BMI=2;
                 break;
         }
 

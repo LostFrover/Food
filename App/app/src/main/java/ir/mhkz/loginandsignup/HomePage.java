@@ -106,7 +106,7 @@ public class HomePage extends AppCompatActivity {
             //单击搜索是激发该方法
             public boolean onQueryTextSubmit(String newtext) {
                 //Toast.makeText(HomePage.this, "搜索框暂时不可用", Toast.LENGTH_SHORT).show();
-                String serv = "http://203.195.155.114:3389/get?choise=5&food="+newtext;
+                String serv = "http://203.195.155.114:3389/AlikeText?food="+newtext;
                 HttpGet httpGet = new HttpGet(serv);
                 HttpClient httpClient = new DefaultHttpClient();
                 //发送请求
@@ -118,8 +118,8 @@ public class HomePage extends AppCompatActivity {
                     try {
                         InputStream inputStream = response.getEntity().getContent();
                         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-                        String result = "";
-                        if(null!=(result = reader.readLine())) {
+                        String result  = reader.readLine();
+                        if(null!=result) {
                             Intent intentRst = new Intent(HomePage.this,SearchResult.class);
                             intentRst.putExtra("result",result);
                             startActivity(intentRst);
@@ -222,13 +222,12 @@ public class HomePage extends AppCompatActivity {
         byte[] bytes=bos.toByteArray();
         String pic = Base64.encodeToString(bytes,Base64.DEFAULT);
         //将在这里添加图片上传
-        String serv = "http://203.195.155.114:443/post";
+        String serv = "http://203.195.155.114:3389/Photo";
         //String serv = "http://203.195.155.114:8080/PatternRecognition";  //API测试
         HttpPost httpPost = new HttpPost(serv);
         HttpClient httpClient = new DefaultHttpClient();
         try {
             List<BasicNameValuePair> list = new ArrayList<BasicNameValuePair>();
-            list.add(new BasicNameValuePair("choise","2"));
             list.add(new BasicNameValuePair("id",id));
             list.add(new BasicNameValuePair("pic",pic));
             httpPost.setEntity(new UrlEncodedFormEntity(list, HTTP.UTF_8));// 设置请求参数
@@ -248,11 +247,13 @@ public class HomePage extends AppCompatActivity {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                 String result = "";
                 String line = reader.readLine();
-                if(!(line.equals("Failed")) ) {
+                if((!line.equals("Failed")) && (!line.matches("<html>")) ) {
                     result+=line;
                     Toast.makeText(HomePage.this, result, Toast.LENGTH_SHORT).show();
-
-                    return;
+                    Intent intentRst = new Intent(HomePage.this,SearchResult.class);
+                    intentRst.putExtra("spic",pic);
+                    intentRst.putExtra("result",result);
+                    startActivity(intentRst);
                 }
                 else{
                     Toast.makeText(HomePage.this, line, Toast.LENGTH_SHORT).show();
@@ -266,6 +267,7 @@ public class HomePage extends AppCompatActivity {
             e.printStackTrace();
             Toast.makeText(HomePage.this,e.getMessage(),  Toast.LENGTH_SHORT).show();
         }
+        return;
     }
 
 }

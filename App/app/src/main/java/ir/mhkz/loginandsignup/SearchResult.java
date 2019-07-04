@@ -31,6 +31,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class SearchResult extends AppCompatActivity {
+    ImageView searchPic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,16 @@ public class SearchResult extends AppCompatActivity {
         Intent homepage = getIntent();
         String []rstarr = new String[0];
         String result = homepage.getStringExtra("result");
+        String spic = homepage.getStringExtra("spic");
+        Bitmap srpic = null;
+        try {
+            byte[] bitmapArray = Base64.decode(spic, Base64.DEFAULT);
+            srpic = BitmapFactory.decodeByteArray(bitmapArray, 0, bitmapArray.length);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        searchPic=findViewById(R.id.SearchPic);
+        searchPic.setImageBitmap(srpic);
         if(!result.equals("failed")) {
             try {
                 JSONArray ja = new JSONArray(result);
@@ -71,7 +82,7 @@ public class SearchResult extends AppCompatActivity {
                             foodname = foodname.split("\n")[0];
                             foodname = foodname.replace(" ","%20");
 
-                            String serv = "http://203.195.155.114:3389/get?choise=7&foodname="+foodname;
+                            String serv = "http://203.195.155.114:3389/Text?foodname="+foodname;
                             //发送请求
                             try {
                                 HttpGet httpGet = new HttpGet(serv);
@@ -83,7 +94,8 @@ public class SearchResult extends AppCompatActivity {
                                     String result = "";
                                     String show="";
                                     String []res={};
-                                    if(null!=(result = reader.readLine())) {
+                                    result = reader.readLine();
+                                    if((null!=result ) && !result.matches("<html>")) {
                                         try {
                                                 res = result.split("[}]]");
                                                 result = res[0].substring(1)+"}";
