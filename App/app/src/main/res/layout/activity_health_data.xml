@@ -94,12 +94,27 @@
 
                     <TextView
                         android:id="@+id/userName"
-                        android:layout_width="312dp"
-                        android:layout_height="42dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="空"
                         android:textColor="@color/textcolor"
                         android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/ageTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="年龄"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/age"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textColor="@color/black" />
                 </TableRow>
 
                 <TableRow

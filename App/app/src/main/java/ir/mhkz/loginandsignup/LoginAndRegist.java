@@ -36,7 +36,7 @@ public class LoginAndRegist extends AppCompatActivity {
 
 
     private EditText username, password, reg_username, reg_password,
-            reg_email, reg_confirmpassword;
+            reg_phone, reg_confirmpassword;
     private Button login, signUp, reg_register;
     private TextInputLayout txtInLayoutUsername, txtInLayoutPassword, txtInLayoutRegPassword, txtInLayoutRegConfirmPassword;
     private CheckBox rememberMe;
@@ -202,7 +202,7 @@ public class LoginAndRegist extends AppCompatActivity {
         reg_username = dialogView.findViewById(R.id.reg_username);
         reg_password = dialogView.findViewById(R.id.reg_password);
         reg_confirmpassword = dialogView.findViewById(R.id.reg_confirmpassword);
-        reg_email = dialogView.findViewById(R.id.reg_email);
+        reg_phone = dialogView.findViewById(R.id.reg_phone);
         reg_register = dialogView.findViewById(R.id.reg_register);
         txtInLayoutRegPassword = dialogView.findViewById(R.id.txtInLayoutRegPassword);
         txtInLayoutRegConfirmPassword = dialogView.findViewById(R.id.txtInLayoutRegConfirmPassword);
@@ -211,12 +211,12 @@ public class LoginAndRegist extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String rp=reg_password.getText().toString();
-                String em=reg_email.getText().toString();
-                if (reg_email.getText().toString().trim().isEmpty()) {
-                    reg_email.setError("此行不可留空");
+                String em=reg_phone.getText().toString();
+                if (reg_phone.getText().toString().trim().isEmpty()) {
+                    reg_phone.setError("此行不可留空");
                 }else{
-                    if(!emailtool.emailMacth(em)){
-                        reg_email.setError("邮箱格式有误");
+                    if(!phonetool.phoneMacth(em)){
+                        reg_phone.setError("电话号码格式有误");
                     }
                 }
                 if (reg_username.getText().toString().trim().isEmpty()) {
@@ -242,15 +242,15 @@ public class LoginAndRegist extends AppCompatActivity {
                     if (!reg_confirmpassword.getText().toString().equals(reg_password.getText().toString())) {
                         reg_confirmpassword.setError("与输入密码不同，请检查");
                     } else {
-                        if (    emailtool.emailMacth(em)&&
+                        if (    phonetool.phoneMacth(em)&&
                                (rp.length()>7&&rp.length()<21)&&
                               !(reg_username.getText().toString().trim().isEmpty() &&
                                 reg_password.getText().toString().trim().isEmpty() &&
                                 reg_confirmpassword.getText().toString().trim().isEmpty() &&
-                                reg_email.getText().toString().trim().isEmpty())) {
+                                reg_password.getText().toString().trim().isEmpty())) {
                             String name = reg_username.getText().toString();
                             String pwd = reg_password.getText().toString();
-                            String email = reg_email.getText().toString();
+                            String phone = reg_password.getText().toString();
                             //向服务器请求注册，并发送用户名，邮箱，密码
                             //用户编号自动+=1
                             String serv = "http://203.195.155.114:3389/Reg";
@@ -262,7 +262,7 @@ public class LoginAndRegist extends AppCompatActivity {
                                     List<BasicNameValuePair> list = new ArrayList<BasicNameValuePair>();
                                     list.add(new BasicNameValuePair("name", name));
                                     list.add(new BasicNameValuePair("pwd",pwd));
-                                    list.add(new BasicNameValuePair("email",email));
+                                    list.add(new BasicNameValuePair("phone",phone));
                                     httpPost.setEntity(new UrlEncodedFormEntity(list, HTTP.UTF_8));// 设置请求参数
                                 } catch (UnsupportedEncodingException e1) {
                                     Toast.makeText(LoginAndRegist.this, "发送失败", Toast.LENGTH_SHORT).show();
@@ -283,7 +283,7 @@ public class LoginAndRegist extends AppCompatActivity {
                                         dia.dismiss();
                                         return;
                                     }
-
+                                    dia.dismiss();
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -299,11 +299,11 @@ public class LoginAndRegist extends AppCompatActivity {
         });
     }
 
-    public static  class emailtool{
-        public static  boolean emailMacth(String email)
+    public static  class phonetool{
+        public static  boolean phoneMacth(String phone)
         {
-            String regex = "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-            return email.matches(regex);
+            String regex = "^1[1-9][0-9]{9}$";
+            return phone.matches(regex);
         }
     }
 

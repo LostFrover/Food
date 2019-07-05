@@ -249,7 +249,7 @@ public class HomePage extends AppCompatActivity {
                 String line = reader.readLine();
                 if((!line.equals("Failed")) && (!line.matches("<html>")) ) {
                     result+=line;
-                    Toast.makeText(HomePage.this, result, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(HomePage.this, result, Toast.LENGTH_SHORT).show();
                     Intent intentRst = new Intent(HomePage.this,SearchResult.class);
                     intentRst.putExtra("spic",pic);
                     intentRst.putExtra("result",result);

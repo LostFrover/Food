@@ -6,7 +6,7 @@
     <string name="Login">登录</string>
     <string name="Register">注册</string>
     <string name="Logo">Logo</string>
-    <string name="Email">Email</string>
+    <string name="Phone">Phone</string>
     <string name="ConfirmPassword">确认密码</string>
     <string name="SignUp">注册</string>
     <string name="registrationPage">用户注册</string>

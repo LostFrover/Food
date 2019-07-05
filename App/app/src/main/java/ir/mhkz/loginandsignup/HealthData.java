@@ -25,7 +25,7 @@ public class HealthData extends AppCompatActivity {
     String id="";
     String pwd="";
     String name="";
-    EditText h,w,bt,bdf,wl,blf,bls,sex;
+    EditText h,w,bt,bdf,wl,blf,bls,sex,age;
     TextView ID,Name;
 
     @Override
@@ -64,7 +64,7 @@ public class HealthData extends AppCompatActivity {
                 if(null!=(result = reader.readLine())) {
                     JSONObject jo = new JSONObject(result.substring(1,result.length()-1));
 
-                    String blsF,blfF,hF,bdfF,wF,btF,wlF,sexF;
+                    String blsF,blfF,hF,bdfF,wF,btF,wlF,sexF,ageF;
 
                     blsF=jo.getString("bloodSugar");
                     blfF=jo.getString("bloodFat");
@@ -74,14 +74,16 @@ public class HealthData extends AppCompatActivity {
                     btF=jo.getString("beat");
                     wlF=jo.getString("waistline");
                     sexF=jo.getString("sex");
+                    ageF=jo.getString("age");
 
                     h=findViewById(R.id.Height);    w=findViewById((R.id.Weight));
                     bt=findViewById(R.id.Beat);     bdf=findViewById(R.id.BodyFat);
                     wl=findViewById(R.id.Waistline);blf=findViewById(R.id.BloodFat);
                     bls=findViewById(R.id.BloodSugar);  sex=findViewById(R.id.sex);
+                    age=findViewById(R.id.age);
                     h.setText(hF);      w.setText(wF);      bt.setText(btF);    sex.setText(sexF);
                     bdf.setText(bdfF);  wl.setText(wlF);    blf.setText(blfF);  bls.setText(blsF);
-
+                    age.setText(ageF);
                 }
 
             } catch (Exception e) {
@@ -99,7 +101,8 @@ public class HealthData extends AppCompatActivity {
                 Toast.makeText(HealthData.this, "点击按钮", Toast.LENGTH_SHORT).show();
                 String servC = "http://203.195.155.114:3389/HealthDtaPost?id="+id+"&sex="+sex.getText().toString()+"&height="+h.getText().toString()+
                         "&weight="+w.getText().toString()+"&waistline="+wl.getText().toString()+"&beat="+bt.getText().toString()+
-                        "&bodyFat="+bdf.getText().toString()+"&bloodSugar="+bls.getText().toString()+"&bloodFat="+blf.getText().toString();
+                        "&bodyFat="+bdf.getText().toString()+"&bloodSugar="+bls.getText().toString()+"&bloodFat="+blf.getText().toString()+
+                        "&age="+age.getText().toString();
 
                 HttpGet httpGet = new HttpGet(servC);
                 HttpClient httpClient = new DefaultHttpClient();
@@ -143,22 +146,24 @@ public class HealthData extends AppCompatActivity {
             }
         });
 
-        //dataAnaly();
+        if(     h.getText().toString().isEmpty()  &&
+                w.getText().toString().isEmpty()  &&
+                sex.getText().toString().isEmpty()&&
+                age.getText().toString().isEmpty()
+        ){}
+            else
+        dataAnaly();
 
     }
     //这里将添加档案分析函数
     private void dataAnaly()
     {
         String report="";
-        double hd,wd,wld,blsd,blfd;
+        double hd,wd;
         hd = Double.valueOf(h.getText().toString());
         wd = Double.valueOf(w.getText().toString());
-        wld = Double.valueOf(wl.getText().toString());
-        blsd = Double.valueOf(bls.getText().toString());
-        blfd = Double.valueOf(blf.getText().toString());
-        int btd,bdfd,sexd;
-        btd = Integer.valueOf(bt.getText().toString());
-        bdfd = Integer.valueOf(bdf.getText().toString());
+        int sexd,aged;
+        aged = Integer.valueOf(age.getText().toString());
         if(sex.getText().toString().equals("男"))
             sexd=1;
         else if(sex.getText().toString().equals("女"))
@@ -166,7 +171,7 @@ public class HealthData extends AppCompatActivity {
         else
             sexd=-1;
         //身高体重判断
-        int BMI;
+        int BMI=0;
         double standerdW;
         switch (sexd) {
             case 1://男
@@ -210,13 +215,50 @@ public class HealthData extends AppCompatActivity {
                     BMI=2;
                 break;
         }
+        String adv="",adv1="",adv2="";
+        switch (BMI)
+        {
+            case -2:
+                adv1="体型瘦弱，建议增重并加强锻炼。\n";
+                break;
+            case -1:
+                adv1="体型偏轻，建议适当增重与锻炼。\n";
+                break;
+            case 0:
+                adv1="体型适中，请继续保持。\n";
+                break;
+            case 1:
+                adv1="体型偏重，建议适当减重与锻炼。\n";
+                break;
+            case 2:
+                adv1="体型偏轻，建议加强锻炼，积极减肥。\n";
+                break;
+            default:
+                adv1="体型分析失误，请见谅。\n";
+                break;
+        }
+        double KKK;
+        if (sexd==1)
+        {
+            KKK=66+(13.7*wd)+(5*hd)-(6.8*aged);
+            KKK=KKK*1.3;
+            adv2 = "每日所需热量为"+KKK+"大卡，请根据自身情况适当增减";
+        }
+        else if(sexd==0)
+        {
+            KKK=655+(9.6*wd)+(1.8*hd)-(4.7*aged);
+            KKK=KKK*1.3;
+            adv2 = "每日所需热量为"+KKK+"大卡，请根据自身情况适当增减";
+        }
+        else{
+            adv2="每日热量分析失误，请见谅。";
+        }
+        adv = adv1+adv2;
+        TextView A = findViewById(R.id.advice);
+        A.setText(adv);
 
         //体脂腰围
-
         //血糖血脂判断
-
         //脉搏
-
-        //
     }
 }
