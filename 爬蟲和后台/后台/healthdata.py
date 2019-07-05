@@ -1,4 +1,4 @@
-#encoding:utf-8
+﻿#encoding:utf-8
 import pymysql
 #周梓浩
 def updateHealthdata(id,data):
@@ -12,9 +12,9 @@ def updateHealthdata(id,data):
         charset="utf8",
     )
     cursor = db.cursor(cursor=pymysql.cursors.DictCursor)
-    sql = "update healthdata set height = %s,weight = %s,waistline = %s,beat=%s,bodyFat = %s,bloodSugar = %s,bloodFat = %s where userId =%s;"%(data['height'],data['weight'],data['waistline'],data['beat'],data['bodyFat'],data['bloodSugar'],data['bloodFat'],id)
+    sql = "update healthdata set height = %s,weight = %s,waistline = %s,beat=%s,bodyFat = %s,bloodSugar = %s,bloodFat = %s,sex=%s where userId =%s;"
     try:
-        cursor.execute(sql)
+        cursor.execute(sql,(data['height'],data['weight'],data['waistline'],data['beat'],data['bodyFat'],data['bloodSugar'],data['bloodFat'],data['sex'],id))
         db.commit()
         isSuccess = True
     except:
@@ -35,8 +35,8 @@ def selectHealthdata(id):
         charset="utf8",
         )
     cursor = db.cursor(cursor=pymysql.cursors.DictCursor)
-    sql="select * from healthdata where userID = %s;"%(id)
-    cursor.execute(sql)
+    sql="select * from healthdata where userID = %s;"
+    cursor.execute(sql,(id))
     result = cursor.fetchall()   
     db.close();
     return result
