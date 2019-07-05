@@ -8,8 +8,8 @@
     <color name="black">#000000</color>
     <color name="yellow">#FBE544</color>
     <color name="wrong">#ea8943</color>
-    <color name="head">#009431</color>
-    <color name="sidemenuhead">#67A125</color>
-    <color name="sidemenubody">#fcfefe</color>
+    <color name="head">#86BE63</color>
+    <color name="sidemenuhead">#86C045</color>
+    <color name="sidemenubody">#b2de81</color>
     <color name="textcolor">#738A6E</color>
 </resources>
