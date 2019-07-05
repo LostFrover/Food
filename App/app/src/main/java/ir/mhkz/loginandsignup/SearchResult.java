@@ -103,7 +103,10 @@ public class SearchResult extends AppCompatActivity {
                                                 show = "<font color=#ff0000>名称：</font>"+jo.getString("name")
                                                         +"<br><font color=#ff0000>种类：</font>"+jo.getString("type")
                                                         +"<br><font color=#ff0000>热量：</font>"+jo.getString("heat")
-                                                        +"<br><font color=#ff0000>建议：</font>"+jo.getString("advise");
+                                                        +"<br><font color=#ff0000>成分：</font>"+jo.getString("material")
+                                                        +"<br><font color=#ff0000>建议：</font>"+jo.getString("advise")
+                                                        +"<br><font color=#ff0000>制作：</font>"+jo.getString("method")
+                                                ;
 
                                         } catch (JSONException e) {
                                             e.printStackTrace();
