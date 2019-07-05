@@ -51,7 +51,7 @@
                 android:id="@+id/tableLayout"
                 android:layout_width="371dp"
                 android:layout_height="84dp"
-                android:layout_marginStart="20dp">
+                android:layout_marginStart="0dp">
 
                 <TableRow
                     android:id="@+id/RowUserNum"
@@ -76,6 +76,15 @@
                         android:textColor="@color/textcolor"
                         android:textSize="14sp" />
 
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp" />
                 </TableRow>
 
                 <TableRow
@@ -115,15 +124,6 @@
                         android:ems="10"
                         android:inputType="number"
                         android:textColor="@color/black" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="20dp" />
                 </TableRow>
 
             </TableLayout>
