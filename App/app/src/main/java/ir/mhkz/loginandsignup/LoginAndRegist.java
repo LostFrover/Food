@@ -250,7 +250,7 @@ public class LoginAndRegist extends AppCompatActivity {
                                 reg_password.getText().toString().trim().isEmpty())) {
                             String name = reg_username.getText().toString();
                             String pwd = reg_password.getText().toString();
-                            String phone = reg_password.getText().toString();
+                            String phone = reg_phone.getText().toString();
                             //向服务器请求注册，并发送用户名，邮箱，密码
                             //用户编号自动+=1
                             String serv = "http://203.195.155.114:3389/Reg";
@@ -280,10 +280,12 @@ public class LoginAndRegist extends AppCompatActivity {
                                     result = reader.readLine();
                                     if( (result.equals("failed")) && (result.matches("^(<html>)(\\s)*") ) ) {
                                         Toast.makeText(LoginAndRegist.this, "注册失败", Toast.LENGTH_SHORT).show();
-                                        dia.dismiss();
                                         return;
                                     }
-                                    dia.dismiss();
+                                    else{
+                                        Toast.makeText(LoginAndRegist.this, "注册成功", Toast.LENGTH_SHORT).show();
+                                        dia.dismiss();
+                                    }
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
