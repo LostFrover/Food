@@ -70,7 +70,6 @@ public class FirstForData extends AppCompatActivity {
                     result+=line;
                     Toast.makeText(FirstForData.this, result, Toast.LENGTH_SHORT).show();
                     id = line;
-                    return;
                 }
                 else{
                     Toast.makeText(FirstForData.this, line, Toast.LENGTH_SHORT).show();
@@ -108,7 +107,7 @@ public class FirstForData extends AppCompatActivity {
                 
                 String servC = "http://203.195.155.114:3389/HealthDataPost?id="+id+"&sex="+sexF+"&height="+hF+
                             "&weight="+wF+"&waistline="+wlF+"&beat="+btF+"&bodyFat="+bdfF+"&bloodSugar="+blsF+
-                            "&bloodFat="+blfF+"&age="+ageF+"&targetWeight="+tw;
+                            "&bloodFat="+blfF+"&age="+ageF+"&targetWeight="+twF;
 
                 HttpGet httpGet = new HttpGet(servC);
                 HttpClient httpClient = new DefaultHttpClient();
@@ -122,7 +121,7 @@ public class FirstForData extends AppCompatActivity {
                         InputStream inputStream = response.getEntity().getContent();
                         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                         String result = reader.readLine();
-                        if(result.matches("^\\d*")) {
+                        if(result.equals("succeess")) {
                             Toast.makeText(FirstForData.this, "录入成功", Toast.LENGTH_SHORT).show();
                             Intent homepage = new Intent(FirstForData.this,HomePage.class);
                             homepage.putExtra("id",id);
