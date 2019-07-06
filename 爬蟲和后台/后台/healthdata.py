@@ -1,5 +1,6 @@
 ﻿#encoding:utf-8
 import pymysql
+import time
 #周梓浩
 def updateHealthdata(id,data):
     isSuccess = False 
@@ -12,16 +13,14 @@ def updateHealthdata(id,data):
         charset="utf8",
     )
     cursor = db.cursor(cursor=pymysql.cursors.DictCursor)
-    sql = "update healthdata set height = %s,weight = %s,waistline = %s,beat=%s,bodyFat = %s,bloodSugar = %s,bloodFat = %s,sex=%s where userId =%s;"
-    try:
-        cursor.execute(sql,(data['height'],data['weight'],data['waistline'],data['beat'],data['bodyFat'],data['bloodSugar'],data['bloodFat'],data['sex'],id))
-        db.commit()
-        isSuccess = True
-    except:
-        db.rollback()
-        isSuccess = False
-    finally:
-        db.close();
+    sql = "update healthdata set height = %s,weight = %s,waistline = %s,beat=%s,bodyFat = %s,bloodSugar = %s,bloodFat = %s,sex=%s,age=%s,targetWeight=%s where userId =%s;"
+    cursor.execute(sql,(data['height'],data['weight'],data['waistline'],data['beat'],data['bodyFat'],data['bloodSugar'],data['bloodFat'],data['sex'],data['age'],data['targetWeight'],id))
+    db.commit()
+    sql="insert into weight(id,user_id,weight,date) values(null,%s,%s,curdate());"
+    cursor.execute(sql,(id,data['weight']))
+    db.commit()
+    isSuccess = True
+    db.close();
     return isSuccess
 
 def selectHealthdata(id):

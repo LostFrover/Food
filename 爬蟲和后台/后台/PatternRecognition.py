@@ -33,5 +33,5 @@ class MainPostHandler(tornado.web.RequestHandler):
 application = tornado.web.Application([(r"/PatternRecognition", MainPostHandler), ])
  
 if __name__ == "__main__":
-    application.listen(8080)
+    application.listen(443)
     tornado.ioloop.IOLoop.instance().start()

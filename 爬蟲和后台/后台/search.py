@@ -31,7 +31,7 @@ def searchforAllLike(text):
         charset="utf8",
     )
     cursor = db.cursor(cursor=pymysql.cursors.DictCursor)
-    sql = "select name,heat,advise,type from food where name=%s;"
+    sql = "select name,heat,advise,type,material,method from food where name=%s;"
     cursor.execute(sql,(foodname))
     result = cursor.fetchall()
     if len(result)>0:
