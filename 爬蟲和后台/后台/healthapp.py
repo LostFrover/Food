@@ -12,7 +12,10 @@ import urllib
 import test
 import findnamewithid
 import os
+import weight
+import diet
 #周梓浩
+
 
 class Reg(tornado.web.RequestHandler):
     def post(self):
@@ -20,14 +23,13 @@ class Reg(tornado.web.RequestHandler):
         name=urllib.parse.unquote(name, encoding='utf-8')
         pwd = self.get_argument('pwd')
         if (len(pwd)<8):
-            self.write("密碼長度不能少于8")
+            self.write("密碼長度不能少于8位")
             return 0
-        email = self.get_argument('email')
-        p = re.compile(r"[^@]+@[^@]+\.[^@]+")
-        if not p.match(email):
-            self.write("邮件不合乎格式")
+        phone = self.get_argument('phone')
+        if (len(phone)!=11):
+            self.write("電話格式不對")
             return 0
-        isSuccess = account.regsister(name,pwd,email)
+        isSuccess = account.regsister(name,pwd,phone)
         if isSuccess:
             self.write("Success")
         else:
@@ -74,6 +76,8 @@ class setHealthData(tornado.web.RequestHandler):
         bodyFat = self.get_argument('bodyFat')
         bloodSugar = self.get_argument('bloodSugar')
         bloodFat = self.get_argument('bloodFat')
+        age = self.get_argument('age')
+        targetWeight = self.get_argument('targetWeight')
         data['sex'] = sex
         data['height'] = height
         data['weight'] = weight
@@ -82,6 +86,8 @@ class setHealthData(tornado.web.RequestHandler):
         data['bodyFat'] = bodyFat
         data['bloodSugar'] = bloodSugar
         data['bloodFat'] = bloodFat
+        data['age'] = age
+        data['targetWeight'] = targetWeight
         result = healthdata.updateHealthdata(id,data)
         if result:
             self.write("succeess")
@@ -144,7 +150,50 @@ class searchFoodForText(tornado.web.RequestHandler):
             db.close();
         self.write(str(result)+" pic:"+str(base_data).lstrip("b'").rstrip("'"))
 
-application = tornado.web.Application([(r"/Login", Login), (r"/Reg", Reg),(r"/Photo", Photo),(r"/HealthDataPost", setHealthData),(r"/HealthDataGet",getHealthData),(r"/AccountData", changeAccount),(r"/AlikeText", searchFoodForAlikeText),(r"/Text", searchFoodForText)])
+class downloadApk(tornado.web.RequestHandler):
+    def get(self):
+        self.set_header('Content-Type', 'application/vnd.android.package-archive')
+        self.set_header('Content-Disposition', 'attachment; filename=%s'%'food_master.apk')
+        with open('./food_master.apk', 'rb') as f:
+            while True:
+                data = f.read(1024)
+                if not data:
+                    break
+                self.write(data)
+        self.finish()
+
+class Recorddiet(tornado.web.RequestHandler):
+    def post(self):
+        id= self.get_argument('id')
+        food=self.get_argumnet('food')
+        type = self.get_argument('type')
+        quantity=self.get_argument('quantity')
+        diet.recorddiet(id,food,type,quantity)
+        self.write("finished")
+        
+class Recordweight(tornado.web.RequestHandler):
+    def post(self):
+        id= self.get_argument('id')
+        weight=self.get_argument('weight')
+        weight.recordweight(id,weight)
+        self.write('finished')
+    
+class getdiet(tornado.web.RequestHandler):
+    def get(self):
+        id = self.get_argument('id')
+        result= diet.getdiet(id)
+        return str(result)
+        
+class getweight(tornado.web.RequestHandler):
+    def get(self):
+        id = self.get_argument('id')
+        result= weight.getweight(id)
+        return str(result)
+
+
+Hander=[(r"/Login", Login), (r"/Reg", Reg),(r"/Photo", Photo),(r"/HealthDataPost", setHealthData),(r"/HealthDataGet",getHealthData),(r"/AccountData", changeAccount),(r"/AlikeText", searchFoodForAlikeText),(r"/Text", searchFoodForText),(r"/APK",downloadApk),(r"/dietGet",getdiet),(r"/weightget",getweight),(r"/recorddiet", Recorddiet),(r"/recordweight", Recordweight)]
+
+application = tornado.web.Application(Hander)
  
 if __name__ == "__main__":
     application.listen(3389)

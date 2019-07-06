@@ -9,8 +9,8 @@ import tensorflow as tf
 import numpy as np
 import os
 
-model_name = '/root/deep_learning/pb/output_graph.pb'
-label_filename = '/root/deep_learning/outputlabels.txt'
+model_name = './pb/output_graph.pb'
+label_filename = './outputlabels.txt'
 
 # 读取并创建一个图graph来存放Google训练好的Inception_v3模型（函数）
 def create_graph():

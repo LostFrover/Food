@@ -22,7 +22,7 @@ def login(name, pwd):
         db.close()
         return -1
 
-def regsister(name,pwd,email):
+def regsister(name,pwd,phone):
     isSuccess = False 
     db = pymysql.connect(
         host="cdb-0zids4jw.bj.tencentcdb.com",
@@ -33,19 +33,15 @@ def regsister(name,pwd,email):
         charset="utf8",
         )
     cursor = db.cursor(cursor=pymysql.cursors.DictCursor)
-    sql="insert into user(userID,userName,Password,email) values (null,%s,%s,%s);"
+    sql="insert into user(userID,userName,Password,Phone,Regdate) values (null,%s,%s,%s,curdate());"
     try:
-        cursor.execute(sql,(name,pwd,email))
+        cursor.execute(sql,(name,pwd,phone))
         db.commit()
         id = login(name,pwd)
-        sql = "insert into healthdata(userID,height,weight,waistline,beat,bodyFat,bloodSugar,bloodFat) values(%s,null,null,null,null,null,null,null);"
-        try:
-            cursor.execute(sql,(id))
-            db.commit()
-            isSuccess = True
-        except:
-            db.rollback()
-            isSuccess = False
+        sql = "insert into healthdata(userID,height,weight,waistline,beat,bodyFat,bloodSugar,bloodFat,age,targetWeight) values(%s,null,null,null,null,null,null,null,null,null);"
+        cursor.execute(sql,(id))
+        db.commit()
+        sSuccess = True
     except:
         db.rollback()
         isSuccess = False
