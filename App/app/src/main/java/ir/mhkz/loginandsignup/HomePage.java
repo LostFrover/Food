@@ -231,6 +231,7 @@ public class HomePage extends AppCompatActivity {
             list.add(new BasicNameValuePair("id",id));
             list.add(new BasicNameValuePair("pic",pic));
             httpPost.setEntity(new UrlEncodedFormEntity(list, HTTP.UTF_8));// 设置请求参数
+            Toast.makeText(HomePage.this, "发送中，请稍等", Toast.LENGTH_SHORT).show();
         } catch (UnsupportedEncodingException e1) {
             Toast.makeText(HomePage.this, "发送失败", Toast.LENGTH_SHORT).show();
         }

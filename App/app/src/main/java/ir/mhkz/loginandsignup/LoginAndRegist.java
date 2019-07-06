@@ -285,6 +285,11 @@ public class LoginAndRegist extends AppCompatActivity {
                                     else{
                                         Toast.makeText(LoginAndRegist.this, "注册成功", Toast.LENGTH_SHORT).show();
                                         dia.dismiss();
+                                        Intent ffd = new Intent(LoginAndRegist.this,FirstForData.class);
+                                        ffd.putExtra("name",name);
+                                        ffd.putExtra("pwd",pwd);
+                                        startActivity(ffd);
+                                        LoginAndRegist.this.finish();
                                     }
                                 } catch (Exception e) {
                                     e.printStackTrace();

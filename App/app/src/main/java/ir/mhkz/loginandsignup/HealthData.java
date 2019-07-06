@@ -25,7 +25,7 @@ public class HealthData extends AppCompatActivity {
     String id="";
     String pwd="";
     String name="";
-    EditText h,w,bt,bdf,wl,blf,bls,sex,age;
+    EditText h,w,bt,bdf,wl,blf,bls,sex,age,tw;
     TextView ID,Name;
 
     @Override
@@ -64,7 +64,7 @@ public class HealthData extends AppCompatActivity {
                 if(null!=(result = reader.readLine())) {
                     JSONObject jo = new JSONObject(result.substring(1,result.length()-1));
 
-                    String blsF,blfF,hF,bdfF,wF,btF,wlF,sexF,ageF;
+                    String blsF="",blfF="",hF="",bdfF="",wF="",btF="",wlF="",sexF="",ageF="",twF="";
 
                     blsF=jo.getString("bloodSugar");
                     blfF=jo.getString("bloodFat");
@@ -75,15 +75,17 @@ public class HealthData extends AppCompatActivity {
                     wlF=jo.getString("waistline");
                     sexF=jo.getString("sex");
                     ageF=jo.getString("age");
+                    twF=jo.getString("targetWeight");
 
                     h=findViewById(R.id.Height);    w=findViewById((R.id.Weight));
                     bt=findViewById(R.id.Beat);     bdf=findViewById(R.id.BodyFat);
                     wl=findViewById(R.id.Waistline);blf=findViewById(R.id.BloodFat);
                     bls=findViewById(R.id.BloodSugar);  sex=findViewById(R.id.sex);
-                    age=findViewById(R.id.age);
+                    age=findViewById(R.id.age);      tw=findViewById(R.id.targetWeight);
                     h.setText(hF);      w.setText(wF);      bt.setText(btF);    sex.setText(sexF);
                     bdf.setText(bdfF);  wl.setText(wlF);    blf.setText(blfF);  bls.setText(blsF);
-                    age.setText(ageF);
+                    age.setText(ageF);  tw.setText(twF);
+
                 }
 
             } catch (Exception e) {
@@ -98,11 +100,11 @@ public class HealthData extends AppCompatActivity {
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(HealthData.this, "点击按钮", Toast.LENGTH_SHORT).show();
-                String servC = "http://203.195.155.114:3389/HealthDtaPost?id="+id+"&sex="+sex.getText().toString()+"&height="+h.getText().toString()+
+                //Toast.makeText(HealthData.this, "点击按钮", Toast.LENGTH_SHORT).show();
+                String servC = "http://203.195.155.114:3389/HealthDataPost?id="+id+"&sex="+sex.getText().toString()+"&height="+h.getText().toString()+
                         "&weight="+w.getText().toString()+"&waistline="+wl.getText().toString()+"&beat="+bt.getText().toString()+
                         "&bodyFat="+bdf.getText().toString()+"&bloodSugar="+bls.getText().toString()+"&bloodFat="+blf.getText().toString()+
-                        "&age="+age.getText().toString();
+                        "&age="+age.getText().toString()+"&targetWeight="+tw.getText().toString();
 
                 HttpGet httpGet = new HttpGet(servC);
                 HttpClient httpClient = new DefaultHttpClient();
