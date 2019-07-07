@@ -12,7 +12,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="51dp"
-        android:background="@color/head"
+        android:background="@color/bluehead"
         android:baselineAligned="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -28,10 +28,15 @@
             android:scaleType="centerInside"
             app:srcCompat="@drawable/back" />
 
-        <Space
+        <TextView
+            android:id="@+id/textView13"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:text="健康档案"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
 
     </LinearLayout>
 
@@ -49,8 +54,8 @@
 
             <TableLayout
                 android:id="@+id/tableLayout"
-                android:layout_width="371dp"
-                android:layout_height="84dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="0dp">
 
                 <TableRow
@@ -110,12 +115,29 @@
                         android:textColor="@color/textcolor"
                         android:textSize="24sp" />
 
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/RowAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
                     <TextView
                         android:id="@+id/ageTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="年龄"
-                        android:textColor="@color/black" />
+                        android:text="年龄:"
+                        android:textColor="@color/black"
+                        android:textSize="24sp" />
 
                     <EditText
                         android:id="@+id/age"
@@ -127,6 +149,10 @@
                 </TableRow>
 
             </TableLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -158,8 +184,8 @@
                         android:textSize="20sp" />
 
                     <Space
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="55dp"
+                        android:layout_height="match_parent" />
 
                     <TextView
                         android:id="@+id/sexTitle"
@@ -172,7 +198,7 @@
 
                     <EditText
                         android:id="@+id/sex"
-                        android:layout_width="wrap_content"
+                        android:layout_width="125dp"
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPersonName"
@@ -206,7 +232,7 @@
                         android:textSize="20sp" />
 
                     <Space
-                        android:layout_width="40dp"
+                        android:layout_width="55dp"
                         android:layout_height="match_parent" />
 
                     <TextView
@@ -257,8 +283,8 @@
                         android:textSize="20sp" />
 
                     <Space
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="55dp"
+                        android:layout_height="match_parent" />
 
                     <TextView
                         android:id="@+id/WaistlineTitle"
@@ -306,8 +332,8 @@
                         android:textSize="20sp" />
 
                     <Space
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="55dp"
+                        android:layout_height="match_parent" />
 
                     <TextView
                         android:id="@+id/BloodSugarTitle"
@@ -340,10 +366,11 @@
 
                     <TextView
                         android:id="@+id/targetWeightTitle"
-                        android:layout_width="wrap_content"
+                        android:layout_width="51dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="目标体重" />
+                        android:text="目标体重:"
+                        android:textSize="20sp" />
 
                     <EditText
                         android:id="@+id/targetWeight"
@@ -352,6 +379,11 @@
                         android:layout_weight="1"
                         android:ems="4"
                         android:inputType="numberDecimal" />
+
+                    <Space
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
                 </LinearLayout>
 
                 <Space
@@ -382,17 +414,31 @@
 
                 </LinearLayout>
 
-            </LinearLayout>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="400dp">
 
-            <Button
-                android:id="@+id/change"
-                android:layout_width="247dp"
-                android:layout_height="69dp"
-                android:layout_marginStart="80dp"
-                android:layout_marginTop="500dp"
-                android:layout_marginEnd="80dp"
-                android:background="@color/sidemenuhead"
-                android:text="修改" />
+                    <Space
+                        android:layout_width="110dp"
+                        android:layout_height="75dp" />
+
+                    <Button
+                        android:id="@+id/change"
+                        android:layout_width="150dp"
+                        android:layout_height="60dp"
+                        android:background="@color/yellowhead"
+                        android:text="修改"
+                        android:textSize="20sp"
+                        app:layout_constraintTop_toBottomOf="@+id/RowAdvice" />
+
+                    <Space
+                        android:layout_width="130dp"
+                        android:layout_height="75dp" />
+
+                </TableRow>
+
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

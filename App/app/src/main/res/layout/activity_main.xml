@@ -6,49 +6,50 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_gravity="center_horizontal"
-    android:background="@color/cardview_light_background"
+    android:background="@color/backgroudgray"
     android:orientation="horizontal">
 
-    <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/Constraint1"
-        android:layout_width="fill_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/Constraint2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/logo"
-            android:layout_width="157dp"
-            android:layout_height="117dp"
-            android:layout_marginStart="8.0dip"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="8.0dip"
-            android:layout_marginBottom="50dp"
-            android:contentDescription="@string/Logo"
-            android:src="@drawable/logo"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/imageView2"
+            android:layout_width="407dp"
+            android:layout_height="304dp"
+            android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:srcCompat="@drawable/main" />
     </android.support.constraint.ConstraintLayout>
 
-    <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/Constraint2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/white"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@id/Constraint1"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Constraint1">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.443">
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/txtInLayoutUsername"
@@ -113,32 +114,31 @@
 
     </android.support.constraint.ConstraintLayout>
 
-
     <android.support.constraint.ConstraintLayout
         android:id="@+id/Constraint3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        app:layout_constraintBottom_toBottomOf="@id/Constraint2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.083"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/Constraint4"
-        app:layout_constraintVertical_bias="0.7">
+        app:layout_constraintTop_toBottomOf="@+id/Constraint2">
 
         <CheckBox
             android:id="@+id/rememberMe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/head"
+            android:buttonTint="@color/grayblue"
             android:text="@string/RememberMe"
             android:textColor="@android:color/darker_gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -147,15 +147,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Constraint2"
-        app:layout_constraintVertical_bias="0.337">
+        app:layout_constraintTop_toBottomOf="@+id/Constraint3">
 
         <Button
             android:id="@+id/login"
@@ -166,13 +165,14 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8.0dip"
             android:layout_weight="1.0"
-            android:background="@color/colorPrimaryDark"
+            android:background="@drawable/btn_login"
             android:text="@string/Login"
             android:theme="@style/ButtonLogin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/signUp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/signUp"
@@ -183,12 +183,13 @@
             android:layout_marginEnd="8.0dip"
             android:layout_marginBottom="8.0dip"
             android:layout_weight="1.0"
-            android:background="@color/colorPrimaryDark"
+            android:background="@drawable/btn_signup"
             android:text="@string/SignUp"
             android:theme="@style/ButtonSignUp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/login"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
     </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

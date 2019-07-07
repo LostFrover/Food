@@ -7,9 +7,9 @@
 
     <LinearLayout
         android:id="@+id/LinearRP"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:background="@color/yellowhead"
         android:gravity="center_vertical"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,13 +25,13 @@
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:text="详细信息"
-            android:textSize="30sp" />
+            android:textSize="24sp" />
 
     </LinearLayout>
 
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="403dp"
+        android:layout_height="517dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,24 +49,29 @@
 
                 <ImageView
                     android:id="@+id/pic"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="205dp"
+                    android:layout_height="178dp"
+                    android:layout_marginLeft="85dp"
                     app:srcCompat="?android:attr/panelBackground" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/t1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="查询错误"
-                        android:textColor="@color/black" />
-
-                </LinearLayout>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="335dp"
+                android:layout_height="85dp"
+                android:layout_marginLeft="40dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/t1"
+                    android:layout_width="301dp"
+                    android:layout_height="51dp"
+                    android:text="查询错误"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 

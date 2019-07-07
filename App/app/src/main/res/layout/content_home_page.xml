@@ -4,42 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sidemenubody"
+    android:background="@color/backgroudgray"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="ir.mhkz.loginandsignup.HomePage"
     tools:showIn="@layout/activity_home_page">
 
     <ImageButton
         android:id="@+id/cameraBtn"
-        android:layout_width="149dp"
-        android:layout_height="142dp"
+        android:layout_width="266dp"
+        android:layout_height="270dp"
         android:background="@color/cardview_light_background"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3"
-        app:srcCompat="@drawable/camera" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="?attr/actionBarDivider" />
+        app:layout_constraintVertical_bias="0.212"
+        app:srcCompat="@drawable/timg" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="51dp"
-        android:background="@color/head"
+        android:background="@color/yellowhead"
         android:baselineAligned="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -51,7 +39,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight="0"
-            android:background="@color/head"
+            android:background="@color/yellowhead"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/detail" />
 
@@ -64,12 +52,40 @@
             android:id="@+id/searchView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@color/head"
+            android:background="@color/yellowhead"
             android:divider="@drawable/search"
             android:queryHint="在此处输入搜索内容">
 
         </SearchView>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/camera"
+        android:layout_width="300dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="162dp"
+        android:background="@drawable/btn_login"
+        android:text="拍照"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cameraBtn" />
+
+    <Button
+        android:id="@+id/gallery"
+        android:layout_width="300dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="162dp"
+        android:background="@drawable/btn_signup"
+        android:text="从相册选择照片"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/camera" />
 
 </android.support.constraint.ConstraintLayout>

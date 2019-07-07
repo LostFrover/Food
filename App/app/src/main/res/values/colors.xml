@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#99AD36</color>
-    <color name="colorPrimaryDark">#78AD26</color>
-    <color name="colorAccent">#4A7246</color>
-    <color name="white">#FFFFFF</color>
-    <color name="gray">#daddd8</color>
-    <color name="black">#000000</color>
-    <color name="yellow">#FBE544</color>
-    <color name="wrong">#ea8943</color>
+
+
     <color name="head">#86BE63</color>
     <color name="sidemenuhead">#86C045</color>
     <color name="sidemenubody">#b2de81</color>
     <color name="textcolor">#738A6E</color>
+
+     //在用的
+    <color name="wrong">#FBE544</color>
+    <color name="yellowhead">#F3C75C</color>
+    <color name="bluehead">#3F6687</color>
+    <color name="darkblue">#292C31</color>
+    <color name="grayblue">#758791</color>
+    <color name="white">#FFFFFF</color>
+    <color name="Ivory">#FFFFF0</color>
+    <color name="backgroudgray">#FBFBFB</color>
+    <color name="gray">#DADDD8</color>
+    <color name="black">#000000</color>
 </resources>

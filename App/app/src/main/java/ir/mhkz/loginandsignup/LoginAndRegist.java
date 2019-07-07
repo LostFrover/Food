@@ -127,6 +127,7 @@ public class LoginAndRegist extends AppCompatActivity {
                     snackbarView.setBackgroundColor(getResources().getColor(R.color.wrong));
                     snackbar.show();
                     uflag = true;
+                    pflag = true;
                 } else if (uflag != false && pflag == false) {
                     Snackbar snackbar = Snackbar.make(view, "请输入密码",
                             Snackbar.LENGTH_LONG);
