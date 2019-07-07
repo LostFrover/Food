@@ -23,7 +23,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/backgroudgray"
-        android:visibility="gone"
+        android:scrollbarSize="4dp"
         app:headerLayout="@layout/sidemenuhead"
         app:itemTextColor="@color/black"
         app:menu="@menu/sidemenu" />

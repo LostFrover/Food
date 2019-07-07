@@ -30,8 +30,8 @@
     </LinearLayout>
 
     <ScrollView
-        android:layout_width="403dp"
-        android:layout_height="517dp"
+        android:layout_width="399dp"
+        android:layout_height="622dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,21 +51,21 @@
                     android:id="@+id/pic"
                     android:layout_width="205dp"
                     android:layout_height="178dp"
-                    android:layout_marginLeft="85dp"
+                    android:layout_marginLeft="90dp"
                     app:srcCompat="?android:attr/panelBackground" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="335dp"
-                android:layout_height="85dp"
-                android:layout_marginLeft="40dp"
+                android:layout_width="327dp"
+                android:layout_height="428dp"
+                android:layout_marginLeft="45dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/t1"
                     android:layout_width="301dp"
-                    android:layout_height="51dp"
+                    android:layout_height="wrap_content"
                     android:text="查询错误"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
