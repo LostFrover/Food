@@ -1,7 +1,6 @@
 package ir.mhkz.loginandsignup;
 
 import android.content.ContentResolver;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,7 +11,6 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
@@ -21,7 +19,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +30,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.protocol.HTTP;
 
 import java.io.BufferedReader;
@@ -154,38 +152,39 @@ public class HomePage extends AppCompatActivity {
 
 
 
-        cameraBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog picc = new AlertDialog.Builder(HomePage.this)
-                    .setMessage("请选择图片来源")
-                    .setNegativeButton("本机相册",new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            picChoise = true;
-                            Intent album = new Intent();
-                            album.setAction(Intent.ACTION_PICK);
-                            album.setType("image/*");
-                            startActivityForResult(album, REQ_1);
-                        }
-                    })
-                    .setPositiveButton("直接拍摄",new DialogInterface.OnClickListener(){
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            picChoise = false;
-                            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);//调用系统camera
-                            startActivityForResult(intent, REQ_1);
-                        }
-                    }).create();
-                picc.show();
-            }
-        });
+//        cameraBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                AlertDialog picc = new AlertDialog.Builder(HomePage.this)
+//                    .setMessage("请选择图片来源")
+//                    .setNegativeButton("本机相册",new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialogInterface, int i) {
+//                            picChoise = true;
+//                            Intent album = new Intent();
+//                            album.setAction(Intent.ACTION_PICK);
+//                            album.setType("image/*");
+//                            startActivityForResult(album, REQ_1);
+//                        }
+//                    })
+//                    .setPositiveButton("直接拍摄",new DialogInterface.OnClickListener(){
+//                        @Override
+//                        public void onClick(DialogInterface dialogInterface, int i) {
+//                            picChoise = false;
+//                            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);//调用系统camera
+//                            startActivityForResult(intent, REQ_1);
+//                        }
+//                    }).create();
+//                picc.show();
+//            }
+//        });
 
         camera.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);//调用系统camera
                 startActivityForResult(intent, REQ_1);
+                picChoise=false;
             }
         });
 
@@ -243,10 +242,17 @@ public class HomePage extends AppCompatActivity {
                 }
             }
         }
-        ByteArrayOutputStream bos=new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 40, bos);//参数100表示不压缩
-        byte[] bytes=bos.toByteArray();
-        String pic = Base64.encodeToString(bytes,Base64.DEFAULT);
+        String pic="";
+        try {
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 40, bos);//参数100表示不压缩
+            byte[] bytes = bos.toByteArray();
+            pic = Base64.encodeToString(bytes, Base64.DEFAULT);
+        }catch (Exception e)
+        {
+            Toast.makeText(HomePage.this,"取消图片选择",Toast.LENGTH_SHORT).show();
+            return;
+        }
 
 
 
@@ -255,6 +261,8 @@ public class HomePage extends AppCompatActivity {
         //String serv = "http://203.195.155.114:8080/PatternRecognition";  //API测试
         HttpPost httpPost = new HttpPost(serv);
         HttpClient httpClient = new DefaultHttpClient();
+        httpClient.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT,8000);//连接时间
+        httpClient.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT,8000);//数据传输时间
         try {
             List<BasicNameValuePair> list = new ArrayList<BasicNameValuePair>();
             list.add(new BasicNameValuePair("id",id));
@@ -262,7 +270,8 @@ public class HomePage extends AppCompatActivity {
             httpPost.setEntity(new UrlEncodedFormEntity(list, HTTP.UTF_8));// 设置请求参数
             Toast.makeText(HomePage.this, "发送中，请稍等", Toast.LENGTH_SHORT).show();
         } catch (UnsupportedEncodingException e1) {
-            Toast.makeText(HomePage.this, "发送失败", Toast.LENGTH_SHORT).show();
+            Toast.makeText(HomePage.this, "发送失败\n"+e1.getMessage(), Toast.LENGTH_SHORT).show();
+
         }
         //发送请求
         try {

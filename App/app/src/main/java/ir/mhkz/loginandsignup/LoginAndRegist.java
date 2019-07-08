@@ -22,6 +22,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.protocol.HTTP;
 
 import java.io.BufferedReader;
@@ -128,6 +129,7 @@ public class LoginAndRegist extends AppCompatActivity {
                     snackbar.show();
                     uflag = true;
                     pflag = true;
+                    return;
                 } else if (uflag != false && pflag == false) {
                     Snackbar snackbar = Snackbar.make(view, "请输入密码",
                             Snackbar.LENGTH_LONG);
@@ -135,6 +137,7 @@ public class LoginAndRegist extends AppCompatActivity {
                     snackbarView.setBackgroundColor(getResources().getColor(R.color.wrong));
                     snackbar.show();
                     pflag = true;
+                    return;
                 }
 
                 //之后post用户名与密码，比对数据库后返回结果
@@ -142,12 +145,14 @@ public class LoginAndRegist extends AppCompatActivity {
                 String serv = "http://203.195.155.114:3389/Login";
                 HttpPost httpPost = new HttpPost(serv);
                 HttpClient httpClient = new DefaultHttpClient();
+                httpClient.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT,5000);//连接时间
+                httpClient.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT,5000);//数据传输时间
                 try {
                     List<BasicNameValuePair> list = new ArrayList<BasicNameValuePair>();
                     list.add(new BasicNameValuePair("name", remname));
                     list.add(new BasicNameValuePair("pwd",rempassword));
                     httpPost.setEntity(new UrlEncodedFormEntity(list, HTTP.UTF_8));// 设置请求参数
-                } catch (UnsupportedEncodingException e1) {
+                } catch (UnsupportedEncodingException e) {
                     Toast.makeText(LoginAndRegist.this, "发送失败", Toast.LENGTH_SHORT).show();
                 }
                 //发送请求
@@ -257,6 +262,7 @@ public class LoginAndRegist extends AppCompatActivity {
                             String serv = "http://203.195.155.114:3389/Reg";
                             HttpPost httpPost = new HttpPost(serv);
                             HttpClient httpClient = new DefaultHttpClient();
+                            httpClient.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT,5000);//数据传输时间
                             //发送请求
                             try {
                                 try {

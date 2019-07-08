@@ -76,6 +76,7 @@
                     android:ems="4"
                     android:hint="年龄"
                     android:inputType="number"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/gray" />
 
                 <Space
@@ -98,6 +99,7 @@
                     android:ems="4"
                     android:hint="身高"
                     android:inputType="numberDecimal"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/gray" />
 
             </TableRow>
@@ -125,6 +127,7 @@
                     android:ems="4"
                     android:hint="体重"
                     android:inputType="numberDecimal"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/gray" />
 
                 <TextView
@@ -142,6 +145,7 @@
                     android:ems="4"
                     android:hint="目标体重"
                     android:inputType="numberDecimal"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/gray" />
             </LinearLayout>
 
@@ -168,6 +172,7 @@
                     android:ems="4"
                     android:hint="腰围"
                     android:inputType="numberDecimal"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/gray" />
 
                 <Space
@@ -191,6 +196,7 @@
                     android:ems="10"
                     android:hint="体脂"
                     android:inputType="numberDecimal"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/gray" />
 
             </LinearLayout>
@@ -218,6 +224,7 @@
                     android:ems="4"
                     android:hint="血糖"
                     android:inputType="numberDecimal"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/gray" />
 
                 <TextView
@@ -236,6 +243,7 @@
                     android:ems="4"
                     android:hint="血脂"
                     android:inputType="numberDecimal"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/gray" />
             </LinearLayout>
 
@@ -259,6 +267,7 @@
                     android:ems="4"
                     android:hint="脉搏/心率"
                     android:inputType="numberDecimal"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/gray" />
             </LinearLayout>
 

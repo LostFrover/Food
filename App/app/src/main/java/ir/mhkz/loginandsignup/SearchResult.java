@@ -49,7 +49,8 @@ public class SearchResult extends AppCompatActivity {
             e.printStackTrace();
         }
         searchPic=findViewById(R.id.SearchPic);
-        searchPic.setImageBitmap(srpic);
+        if (srpic!=null)
+            searchPic.setImageBitmap(srpic);
         if(!result.equals("failed")) {
             try {
                 JSONArray ja = new JSONArray(result);
