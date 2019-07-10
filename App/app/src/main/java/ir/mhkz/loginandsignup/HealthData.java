@@ -20,6 +20,7 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
 
 public class HealthData extends AppCompatActivity {
     String id="";
@@ -240,17 +241,18 @@ public class HealthData extends AppCompatActivity {
                 break;
         }
         double KKK;
+        DecimalFormat df = new DecimalFormat( "0.00");
         if (sexd==1)
         {
             KKK=66+(13.7*wd)+(5*hd)-(6.8*aged);
             KKK=KKK*1.3;
-            adv2 = "每日所需热量为"+KKK+"大卡，请根据自身情况适当增减";
+            adv2 = "每日所需热量为"+df.format(KKK)+"大卡，请根据自身情况适当增减";
         }
         else if(sexd==0)
         {
             KKK=655+(9.6*wd)+(1.8*hd)-(4.7*aged);
             KKK=KKK*1.3;
-            adv2 = "每日所需热量为"+KKK+"大卡，请根据自身情况适当增减";
+            adv2 = "每日所需热量为"+df.format(KKK)+"大卡，请根据自身情况适当增减";
         }
         else{
             adv2="每日热量分析失误，请见谅。";

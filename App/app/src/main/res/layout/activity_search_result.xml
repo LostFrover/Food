@@ -10,14 +10,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="51dp"
-            android:background="@color/yellowhead"
-            android:baselineAligned="false">
+            android:background="@drawable/buttonoutline"
+            android:baselineAligned="false"
+            android:gravity="center">
 
             <ImageButton
                 android:id="@+id/backBtn"
@@ -28,44 +35,41 @@
                 android:scaleType="centerInside"
                 app:srcCompat="@drawable/back" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/SearchPic"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:srcCompat="@drawable/timg" />
-
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="可能结果"
-                android:textAlignment="viewEnd"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:gravity="top"
+                android:text="搜索结果"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="24sp" />
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/SearchPic"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@drawable/shadowoutline"
+            app:srcCompat="@drawable/timg" />
 
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:divider="@color/gray"
+            android:background="@drawable/shadowoutline"
+            android:divider="@color/backgroudgray"
             android:dividerHeight="3dp"
-            android:textAlignment="center" />
+            android:elevation="3dp"
+            android:outlineProvider="background"
+            android:textAlignment="center"
+            android:translationZ="3dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"></LinearLayout>
 
     </LinearLayout>
 

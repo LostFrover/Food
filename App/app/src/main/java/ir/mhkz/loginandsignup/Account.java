@@ -107,7 +107,7 @@ public class Account extends AppCompatActivity {
                     enPwd.getText().toString().isEmpty())
                 )
                 {
-                    AlertDialog ensure = new AlertDialog.Builder(Account.this)
+                    AlertDialog ensure = new AlertDialog.Builder(Account.this,R.style.Theme_AppCompat_Light_Dialog_Alert)
                             .setTitle("请确认")
                             .setMessage("真的要修改用户信息？")
                             .setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -156,6 +156,7 @@ public class Account extends AppCompatActivity {
                                     Toast.makeText(Account.this, "已取消", Toast.LENGTH_SHORT).show();
                                 }
                             })
+
                             .create();
                     ensure.show();
                 }

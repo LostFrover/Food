@@ -8,7 +8,7 @@
         android:id="@+id/LinearRP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/yellow"
+        android:background="@drawable/buttonoutline"
         android:gravity="center_vertical"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/LinearInfo"
@@ -32,9 +32,13 @@
 
     <LinearLayout
         android:id="@+id/LinearInfo"
-        android:layout_width="407dp"
+        android:layout_width="match_parent"
         android:layout_height="457dp"
         android:layout_gravity="center_vertical"
+        android:background="@drawable/shadowoutline"
+        android:translationZ="3dp"
+        android:outlineProvider="background"
+        android:elevation="3dp"
         android:orientation="vertical"
         android:theme="@style/RegistrationPage"
         app:layout_constraintBottom_toBottomOf="parent"

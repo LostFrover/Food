@@ -53,7 +53,10 @@ public class WeightHis extends AppCompatActivity {
         II[0] = findViewById(R.id.i1);II[1] = findViewById(R.id.i2);II[2] = findViewById(R.id.i3);
         II[3] = findViewById(R.id.i4);II[4] = findViewById(R.id.i5);II[5] = findViewById(R.id.i6);
         II[6] = findViewById(R.id.i7);II[7] = findViewById(R.id.i8);II[8] = findViewById(R.id.i9);II[9] = findViewById(R.id.i10);
-
+        TextView[]IT = new TextView[10];
+        IT[0] = findViewById(R.id.ii1);IT[1] = findViewById(R.id.ii2);IT[2] = findViewById(R.id.ii3);
+        IT[3] = findViewById(R.id.ii4);IT[4] = findViewById(R.id.ii5);IT[5] = findViewById(R.id.ii6);
+        IT[6] = findViewById(R.id.ii7);IT[7] = findViewById(R.id.ii8);IT[8] = findViewById(R.id.ii9);IT[9] = findViewById(R.id.ii10);
 
         //让主线程可以访问Internet
         if (android.os.Build.VERSION.SDK_INT > 9) {
@@ -110,12 +113,13 @@ public class WeightHis extends AppCompatActivity {
                         if(!rstarr[i][1].equals("空"))
                             rstarr[i][1]=rstarr[i][1].substring(0,4)+"\n"+rstarr[i][1].substring(5);
                         if(rstarr[i][0].equals(""))
-                            rstarr[i][0]="40.0";
+                            rstarr[i][0]="0.0";
                     }
                     for(int i=0;i<10;i++)
                     {
                         TT[i].setText(rstarr[9-i][1]);
-                        int d =0;
+                        IT[i].setText(rstarr[9-i][0]);
+                        int d =1;
                         if(!rstarr[9-i][1].isEmpty())
                         {
                             if(Integer.valueOf(rstarr[9-i][0].substring(0,rstarr[9-i][0].length()-2))>40)

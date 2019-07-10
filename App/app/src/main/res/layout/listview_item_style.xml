@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/textView"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/shadowoutline"
+    android:elevation="3dp"
+    android:outlineProvider="background"
     android:text="@string/initNull"
     android:textColor="@color/textcolor"
-    android:textSize="20sp" />
+    android:textSize="18sp"
+    android:translationZ="3dp" />
