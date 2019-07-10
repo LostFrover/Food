@@ -94,6 +94,13 @@ public class HomePage extends AppCompatActivity {
                         intentHealthD.putExtra("pwd",pwd);
                         startActivity(intentHealthD);
                         break;
+                    case R.id.weighthis:
+                        Intent intentWH = new Intent(HomePage.this,WeightHis.class);
+                        intentWH.putExtra("id",id);
+                        intentWH.putExtra("name",name);
+                        intentWH.putExtra("pwd",pwd);
+                        startActivity(intentWH);
+                        break;
                 }
                 return false;
             }

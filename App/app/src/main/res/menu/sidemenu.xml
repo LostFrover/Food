@@ -11,6 +11,9 @@
         <item
             android:id="@+id/healthdata"
             android:title="健康档案" />
+        <item
+            android:id="@+id/weighthis"
+            android:title="体重记录" />
 
     </group>
 </menu>
