@@ -2,34 +2,29 @@ package ir.mhkz.loginandsignup;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.CoreConnectionPNames;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+//刘涛
 
 public class WeightHis extends AppCompatActivity {
 
@@ -46,7 +41,7 @@ public class WeightHis extends AppCompatActivity {
         ID = homepage.getStringExtra("id");
 
         TextView[]TT = new TextView[10];
-        TT[0] = findViewById(R.id.t1);TT[1] = findViewById(R.id.t2);TT[2] = findViewById(R.id.t3);
+        TT[0] = findViewById(R.id.text);TT[1] = findViewById(R.id.t2);TT[2] = findViewById(R.id.t3);
         TT[3] = findViewById(R.id.t4);TT[4] = findViewById(R.id.t5);TT[5] = findViewById(R.id.t6);
         TT[6] = findViewById(R.id.t7);TT[7] = findViewById(R.id.t8);TT[8] = findViewById(R.id.t9);TT[9] = findViewById(R.id.t10);
         ImageView[]II = new ImageView[10];
@@ -132,8 +127,6 @@ public class WeightHis extends AppCompatActivity {
                         //LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(20,d);
                         //II[i].setLayoutParams(params);
                         //II[i].setBackgroundColor(Color.parseColor("#FF33B5E5"));
-
-
                             Bitmap bitmap = ((BitmapDrawable) II[i].getBackground()).getBitmap();
                             int width = bitmap.getWidth();
                             int height = bitmap.getHeight();
@@ -144,21 +137,15 @@ public class WeightHis extends AppCompatActivity {
                             matrix.postScale(1, scaleHeight);
                             // 得到新的图片.
                             Bitmap newBitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
-
                             II[i].setImageBitmap(newBitmap);
-
                     }
-
                 }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
         back = findViewById(R.id.backBtn);
         back.setOnClickListener(new View.OnClickListener() {
@@ -167,8 +154,5 @@ public class WeightHis extends AppCompatActivity {
                 WeightHis.this.finish();
             }
         });
-
-
-
     }
 }

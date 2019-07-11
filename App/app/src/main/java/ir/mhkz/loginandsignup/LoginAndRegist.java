@@ -33,6 +33,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+//蒋星宇(主体)   刘涛(注册与登录的条件判断)(账户密码记住功能)(数据提交)
+
 public class LoginAndRegist extends AppCompatActivity {
 
 
@@ -313,6 +315,7 @@ public class LoginAndRegist extends AppCompatActivity {
         });
     }
 
+    //刘涛
     public static  class phonetool{
         public static  boolean phoneMacth(String phone)
         {

@@ -42,6 +42,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+//刘涛(主体)  蒋星宇(相册选择)  陈俊垚(拍照选择)
+
 public class HomePage extends AppCompatActivity {
     private SearchView searchView;
     private static int REQ_1 = 1;
@@ -186,24 +188,27 @@ public class HomePage extends AppCompatActivity {
 //            }
 //        });
 
+        //陈俊垚
         camera.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                //拍照选择
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);//调用系统camera
                 startActivityForResult(intent, REQ_1);
                 picChoise=false;
             }
         });
 
+        //蒋星宇
         gallery.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                //相册选择
                 picChoise = true;
                 Intent album = new Intent();
                 album.setAction(Intent.ACTION_PICK);
                 album.setType("image/*");
                 startActivityForResult(album, REQ_1);
-
             }
         });
 
@@ -218,6 +223,7 @@ public class HomePage extends AppCompatActivity {
     }
 
     @Override
+    //蒋星宇(相册选择)  陈俊垚(拍照选择)   刘涛(整合与图片提交)
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Bitmap bitmap = null;
@@ -261,15 +267,13 @@ public class HomePage extends AppCompatActivity {
             return;
         }
 
-
-
         //将在这里添加图片上传
         String serv = "http://203.195.155.114:3389/Photo";
         //String serv = "http://203.195.155.114:8080/PatternRecognition";  //API测试
         HttpPost httpPost = new HttpPost(serv);
         HttpClient httpClient = new DefaultHttpClient();
         httpClient.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT,8000);//连接时间
-        httpClient.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT,8000);//数据传输时间
+        httpClient.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT,10000);//数据传输时间
         try {
             List<BasicNameValuePair> list = new ArrayList<BasicNameValuePair>();
             list.add(new BasicNameValuePair("id",id));

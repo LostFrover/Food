@@ -6,4 +6,5 @@
         android:orderInCategory="100"
         android:title="菜单"
         app:showAsAction="never" />
+    <!--废弃-->
 </menu>

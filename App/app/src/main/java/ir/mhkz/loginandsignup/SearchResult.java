@@ -30,6 +30,8 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+//刘涛
+
 public class SearchResult extends AppCompatActivity {
     ImageView searchPic;
 
@@ -58,7 +60,7 @@ public class SearchResult extends AppCompatActivity {
                 for(int i=0;i<ja.length();i++)
                 {
                     JSONObject jo = ja.getJSONObject(i);
-                    rstarr[i] = jo.getString("name")+"\n"+jo.getString("heat");
+                    rstarr[i] = "\u3000"+jo.getString("name")+"\n\u3000"+jo.getString("heat");
                 }
 
             } catch (JSONException e) {
@@ -76,11 +78,12 @@ public class SearchResult extends AppCompatActivity {
                     switch (i) {
                         case 0:
                         default:
-                            Toast.makeText(SearchResult.this, "(测试用功能)你点击了" + i + "项", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(SearchResult.this, "(测试用功能)你点击了" + i + "项", Toast.LENGTH_SHORT).show();
                             //二次查询
                             TextView item = (TextView) adapter.getView(i,view,lv);
                             String foodname =item.getText().toString();
                             foodname = foodname.split("\n")[0];
+                            foodname = foodname.replace("\u3000","");
                             foodname = foodname.replace(" ","%20");
 
                             String serv = "http://203.195.155.114:3389/Text?foodname="+foodname;
@@ -117,9 +120,9 @@ public class SearchResult extends AppCompatActivity {
                                         LayoutInflater inflater = getLayoutInflater();
                                         final View dialogView = inflater.inflate(R.layout.detail, null);
                                         dialog.setView(dialogView);
-                                        TextView t1 = dialogView.findViewById(R.id.t1);
+                                        TextView t1 = dialogView.findViewById(R.id.dtltex);
                                         t1.setText(Html.fromHtml(show));
-                                        ImageView pic = dialogView.findViewById(R.id.pic);
+                                        ImageView pic = dialogView.findViewById(R.id.dtlpic);
                                         Bitmap bitmap = null;
                                         try {
                                             byte[] bitmapArray = Base64.decode(res[1].substring(4), Base64.DEFAULT);
@@ -140,7 +143,7 @@ public class SearchResult extends AppCompatActivity {
                                 Toast.makeText(SearchResult.this, "服务器无响应", Toast.LENGTH_SHORT).show();
 
                             }
-                            break;//当我们点击某一项就能吐司我们点了哪一项
+                            break;
                     }
                 }
             });
