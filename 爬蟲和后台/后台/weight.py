@@ -28,7 +28,7 @@ def getweight(id):
                 charset="utf8",
                 )
     cursor = db.cursor(cursor=pymysql.cursors.DictCursor)
-    sql = "select * from weight where user_id = %s ;"
+    sql = "select * from weight where user_id = %s  order by date desc,id desc;"
     cursor.execute(sql,(id))
     result=cursor.fetchall()
     db.close()
