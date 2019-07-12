@@ -45,7 +45,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="55dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
@@ -106,7 +106,7 @@
                         android:layout_height="wrap_content"
                         android:text="用户名:"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
+                        android:textSize="14sp"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
@@ -117,23 +117,15 @@
                         android:gravity="center"
                         android:text="空"
                         android:textColor="@color/textcolor"
-                        android:textSize="20sp" />
+                        android:textSize="14sp" />
 
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="15dp" />
                 </TableRow>
 
                 <TableRow
                     android:id="@+id/RowAge"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
                     android:gravity="center">
 
                     <TextView
@@ -142,7 +134,7 @@
                         android:layout_height="wrap_content"
                         android:text="年龄:"
                         android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:textSize="14sp" />
 
                     <EditText
                         android:id="@+id/age"
@@ -152,7 +144,7 @@
                         android:ems="2"
                         android:inputType="number"
                         android:textColor="@color/textcolor"
-                        android:textSize="18sp" />
+                        android:textSize="14sp" />
                 </TableRow>
 
             </TableLayout>
@@ -160,237 +152,251 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:gravity="center|top"
                 android:orientation="vertical">
 
-                <TableRow
-                    android:id="@+id/RowHS"
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center">
+                    android:gravity="center|top"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/HeightTitle"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="身高："
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/Height"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/HeightTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="身高："
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+
+                            <EditText
+                                android:id="@+id/Height"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/outline"
+                                android:ems="3"
+                                android:hint="(cm)"
+                                android:inputType="numberDecimal"
+                                android:text="0.00"
+                                android:textColor="@color/textcolor"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/WeightTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="体重："
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+
+                            <EditText
+                                android:id="@+id/Weight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/outline"
+                                android:ems="3"
+                                android:hint="(kg)"
+                                android:inputType="number|numberDecimal"
+                                android:text="0.00"
+                                android:textColor="@color/textcolor"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/BodyFatTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="体脂："
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+
+                            <EditText
+                                android:id="@+id/BodyFat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/outline"
+                                android:ems="3"
+                                android:hint="(%)"
+                                android:inputType="number|numberDecimal"
+                                android:text="0"
+                                android:textColor="@color/textcolor"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/BloodFatTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="血脂："
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+
+                            <EditText
+                                android:id="@+id/BloodFat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/outline"
+                                android:ems="3"
+                                android:hint="(mmol/L)"
+                                android:inputType="number|numberDecimal"
+                                android:text="0.00"
+                                android:textColor="@color/textcolor"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/outline"
-                        android:ems="3"
-                        android:hint="(cm)"
-                        android:inputType="numberDecimal"
-                        android:text="0.00"
-                        android:textColor="@color/textcolor"
-                        android:textSize="18sp" />
+                        android:gravity="right|top"
+                        android:orientation="vertical">
 
-                    <Space
-                        android:layout_width="55dp"
-                        android:layout_height="match_parent" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/sexTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="性别："
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
+                            <TextView
+                                android:id="@+id/sexTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="性别："
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
 
+                            <EditText
+                                android:id="@+id/sex"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/outline"
+                                android:ems="3"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/textcolor"
+                                android:textSize="14sp" />
+                        </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/sex"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/outline"
-                        android:ems="3"
-                        android:inputType="textPersonName"
-                        android:textColor="@color/textcolor"
-                        android:textSize="18sp" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
 
-                </TableRow>
+                            <TextView
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="5dp" />
+                                android:id="@+id/BeatTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="脉搏/心率："
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
 
-                <TableRow
-                    android:id="@+id/RowBtW"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center">
+                            <EditText
 
-                    <TextView
-                        android:id="@+id/WeightTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="体重："
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
+                                android:id="@+id/Beat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/outline"
+                                android:ems="3"
+                                android:hint="(次/min)"
+                                android:inputType="number"
+                                android:text="0"
+                                android:textColor="@color/textcolor"
+                                android:textSize="14sp" />
+                        </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/Weight"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/outline"
-                        android:ems="3"
-                        android:hint="(kg)"
-                        android:inputType="number|numberDecimal"
-                        android:text="0.00"
-                        android:textColor="@color/textcolor"
-                        android:textSize="18sp" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
 
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent" />
+                            <TextView
+                                android:id="@+id/WaistlineTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="腰围："
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
 
-                    <TextView
+                            <EditText
+                                android:id="@+id/Waistline"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/outline"
+                                android:ems="3"
+                                android:hint="(cm)"
+                                android:inputType="number|numberDecimal"
+                                android:text="0.00"
+                                android:textColor="@color/textcolor"
+                                android:textSize="14sp" />
+                        </LinearLayout>
 
-                        android:id="@+id/BeatTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="脉搏/心率："
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
 
-                    <EditText
+                            <TextView
+                                android:id="@+id/BloodSugarTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="血糖："
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
 
-                        android:id="@+id/Beat"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/outline"
-                        android:ems="3"
-                        android:hint="(次/min)"
-                        android:inputType="number"
-                        android:text="0"
-                        android:textColor="@color/textcolor"
-                        android:textSize="18sp" />
+                            <EditText
+                                android:id="@+id/BloodSugar"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/outline"
+                                android:ems="3"
+                                android:hint="(mmol/L)"
+                                android:inputType="number|numberDecimal"
+                                android:text="0.00"
+                                android:textColor="@color/textcolor"
+                                android:textSize="14sp" />
+                        </LinearLayout>
 
-                </TableRow>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="5dp" />
-
-                <TableRow
-                    android:id="@+id/RowBsWl"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center">
-
-                    <TextView
-                        android:id="@+id/BodyFatTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="体脂："
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
-
-                    <EditText
-                        android:id="@+id/BodyFat"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/outline"
-                        android:ems="3"
-                        android:hint="(%)"
-                        android:inputType="number|numberDecimal"
-                        android:text="0"
-                        android:textColor="@color/textcolor"
-                        android:textSize="18sp" />
-
-                    <Space
-                        android:layout_width="55dp"
-                        android:layout_height="match_parent" />
-
-                    <TextView
-                        android:id="@+id/WaistlineTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="腰围："
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
-
-                    <EditText
-                        android:id="@+id/Waistline"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/outline"
-                        android:ems="3"
-                        android:hint="(cm)"
-                        android:inputType="number|numberDecimal"
-                        android:text="0.00"
-                        android:textColor="@color/textcolor"
-                        android:textSize="18sp" />
-
-                </TableRow>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="5dp" />
-
-                <TableRow
-                    android:id="@+id/RowBsBf"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center">
-
-                    <TextView
-                        android:id="@+id/BloodFatTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="血脂："
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
-
-                    <EditText
-                        android:id="@+id/BloodFat"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/outline"
-                        android:ems="3"
-                        android:hint="(mmol/L)"
-                        android:inputType="number|numberDecimal"
-                        android:text="0.00"
-                        android:textColor="@color/textcolor"
-                        android:textSize="18sp" />
-
-                    <Space
-                        android:layout_width="55dp"
-                        android:layout_height="match_parent" />
-
-                    <TextView
-                        android:id="@+id/BloodSugarTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="血糖："
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
-
-                    <EditText
-                        android:id="@+id/BloodSugar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/outline"
-                        android:ems="3"
-                        android:hint="(mmol/L)"
-                        android:inputType="number|numberDecimal"
-                        android:text="0.00"
-                        android:textColor="@color/textcolor"
-                        android:textSize="18sp" />
-                </TableRow>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp" />
+                    </LinearLayout>
+                </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:gravity="left"
                     android:orientation="horizontal">
 
                     <TextView
@@ -399,7 +405,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0"
                         android:text="目标体重:"
-                        android:textSize="18sp" />
+                        android:textSize="14sp" />
 
                     <EditText
                         android:id="@+id/targetWeight"
@@ -409,18 +415,16 @@
                         android:background="@drawable/outline"
                         android:ems="4"
                         android:inputType="numberDecimal"
-                        android:textColor="@color/textcolor" />
+                        android:textColor="@color/textcolor"
+                        android:textSize="14sp" />
 
                 </LinearLayout>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp" />
 
                 <LinearLayout
                     android:id="@+id/RowAdvice"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -431,7 +435,7 @@
                         android:gravity="center"
                         android:text="饮食建议"
                         android:textColor="@color/black"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/advice"
@@ -439,7 +443,7 @@
                         android:layout_height="wrap_content"
                         android:text="暂无建议"
                         android:textColor="#555555"
-                        android:textSize="18sp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -448,6 +452,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -457,17 +462,21 @@
 
                 <Button
                     android:id="@+id/change"
-                    android:layout_width="150dp"
-                    android:layout_height="60dp"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
                     android:background="@drawable/buttonoutline"
                     android:text="修改"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     app:layout_constraintTop_toBottomOf="@+id/RowAdvice" />
 
                 <Space
                     android:layout_width="110dp"
                     android:layout_height="75dp" />
             </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="35dp" />
 
         </LinearLayout>
     </ScrollView>
