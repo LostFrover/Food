@@ -57,10 +57,15 @@ class Photo(tornado.web.RequestHandler):
         pic = base64.b64decode(pic)
         string='tmp/'+str(localtime)+str(id)+'.jpg'
         file=open(string,'wb')
-        file.write(pic)
-        file.close()
-        result=test.pic(string)
-        os.remove(string)
+        try:
+            file.write(pic)
+            file.close()
+            result=test.pic(string)
+            os.remove(string)
+        except:
+            os.remove(string)
+            self.write('[]')
+            return 0
         result=findnamewithid.findname(result)
         self.write(str(result))       
 
@@ -182,13 +187,13 @@ class getdiet(tornado.web.RequestHandler):
     def get(self):
         id = self.get_argument('id')
         result= diet.getdiet(id)
-        return str(result)
+        self.write(str(result))
         
 class getweight(tornado.web.RequestHandler):
     def get(self):
         id = self.get_argument('id')
         result= weight.getweight(id)
-        return str(result)
+        self.write(str(result))
 
 
 Hander=[(r"/Login", Login), (r"/Reg", Reg),(r"/Photo", Photo),(r"/HealthDataPost", setHealthData),(r"/HealthDataGet",getHealthData),(r"/AccountData", changeAccount),(r"/AlikeText", searchFoodForAlikeText),(r"/Text", searchFoodForText),(r"/APK",downloadApk),(r"/dietGet",getdiet),(r"/weightget",getweight),(r"/recorddiet", Recorddiet),(r"/recordweight", Recordweight)]
