@@ -57,10 +57,15 @@ class Photo(tornado.web.RequestHandler):
         pic = base64.b64decode(pic)
         string='tmp/'+str(localtime)+str(id)+'.jpg'
         file=open(string,'wb')
-        file.write(pic)
-        file.close()
-        result=test.pic(string)
-        os.remove(string)
+        try:
+            file.write(pic)
+            file.close()
+            result=test.pic(string)
+            os.remove(string)
+        except:
+            os.remove(string)
+            self.write('[]')
+            return 0
         result=findnamewithid.findname(result)
         self.write(str(result))       
 
